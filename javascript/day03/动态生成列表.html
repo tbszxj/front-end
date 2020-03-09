@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        
+    </div>
+    <script>
+        var data = [
+        {"key":"电饭煲","qre":"18745"},
+        {"key":"电饭煲 plus尊享","qre":"1283"},
+        {"key":"电磁炉","qre":"763403"},
+        {"key":"电视","qre":"27157"},
+        {"key":"电水壶","qre":"361516"},
+        {"key":"电饭锅","qre":"507422"},
+        {"key":"电饼铛","qre":"2564"},
+        {"key":"电动牙刷","qre":"103608"},
+        {"key":"电视机","qre":"27156"},
+        {"key":"电暖器","qre":"226774"},
+        {"key":"电火锅","qre":"702766"},
+        {"key":"电热毯","qre":"395833"},
+        {"key":"电脑","qre":"778029"},
+        ];
+
+        //动态创建列表
+        var box = document.getElementById('box');
+        //创建ul
+        //在内存中创建一个DOM对象
+        var ul = document.createElement('ul');
+        //把ul对象添加到box中
+        box.appendChild(ul);
+        //遍历数组生成li
+        for ( var i=0;i<data.length;i++) {
+            //创建li
+            var li = document.createElement('li');
+            //把元素添加到ul中（添加到DOM树上)
+            ul.appendChild(li);
+            //设置li中的内容
+            li.innerText = data[i].key;
+
+            //鼠标放上高亮显示
+            li.onmouseover = function () {
+                this.style.backgroundColor = 'lightgray';
+            }
+            li.onmouseout = function () {
+                this.style.backgroundColor = '';
+            }
+        }
+
+
+    </script>
+</body>
+</html>

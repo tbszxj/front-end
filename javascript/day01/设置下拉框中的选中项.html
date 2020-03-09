@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>innerText和innerHTML的区别</title>           
+    </head>
+    <body> 
+        <select id="sel">
+            <option>回锅肉</option>
+            <option>宫保鸡丁</option>
+            <option>蘑菇炒肉</option>
+            <option id="op">水煮肉片</option>
+            <option>鱼香肉丝</option>
+        </select>
+        <input type="button" value="随机选中" id="btn">
+        <script>          
+           //随机选中
+           var btn = document.getElementById('btn');
+           //var txt = document.getElementById('txt');
+           btn.onclick = function () {
+               //var op = document.getElementById('op');
+               //op.selected = true; 
+               var sel = document.getElementById('sel');
+               var options = sel.getElementsByTagName('option');
+               var index = getRandom(0,options.length-1);
+               console.log(index);
+               options[index].selected = true;
+           }
+           //获取min-max之间的随机整数
+           function getRandom(min, max) {
+               min = Math.ceil(min);
+               max = Math.floor(max);
+               return Math.floor(Math.random() * (max - min + 1))+min;
+           }
+        </script>
+    </body>   
+</html>

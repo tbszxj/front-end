@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @font-face { /*第一步声明字体*/
+            font-family: 'iconfont';
+            src: url('fonts/iconfont.eot');
+            src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+            url('fonts/iconfont.woff2') format('woff2'),
+            url('fonts/iconfont.woff') format('woff'),
+            url('fonts/iconfont.ttf') format('truetype'),
+            url('fonts/iconfont.svg#iconfont') format('svg');
+        }
+        .iconfont { /*第二步定义使用 iconfont 的样式*/
+            font-family: "iconfont" !important;
+            font-size: 30px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: pink;
+        }
+        div::before { /*另一种引用图标的方式*/
+            font-family: "iconfont" !important;
+            font-size: 30px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: pink;
+            content: "\eb65";
+        }
+
+    </style>
+</head>
+<body>
+<!--第三步挑选相应图标并获取字体编码，应用于页面-->
+<span class="iconfont">&#xeb65;</span>
+<span></span>
+<div></div>
+</body>
+</html>

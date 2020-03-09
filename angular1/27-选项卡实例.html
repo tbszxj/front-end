@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <style>
+        #div1 div,#div2 div{
+            width: 200px;
+            height: 200px;
+            border: 1px red solid;
+            display: none;
+        }
+        #div1 input.active,#div2 input.active{
+            background-color: red;
+        }
+
+    </style>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-app="myApp" ng-controller="ctrl">
+    <my-tab my-id="div1" my-data="data1"></my-tab>
+    <my-tab my-id="div2" my-data="data2"></my-tab>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    //定义自定义指令
+
+    app.directive('myTab',function () {
+        return {
+            restrict : 'E',
+            scope : {//数据的绑定方式 @ = &
+                myId : '@', //将数据视为字符串
+                myData : '=', //绑定作用域中的数据对象
+            },
+            //template指定标签中显示的模板
+            template : '<div id="{{myId}}">\n' +
+                '            <input type="button" ng-repeat="data in myData" ng-value="data.title" ng-class="{active : $first}">\n' +
+                '            <div ng-repeat="data in myData">{{data.content}}</div>\n' +
+                '        </div>',
+            link : function (scope,element,attr) {
+                $(element).delegate('input','click',function () {
+                    $(this).attr('class','active').siblings('input').attr('class','');
+                    $(this).siblings('div').eq($(this).index()).css('display','block').siblings('div').css('display','none');
+                })
+            }
+        }
+    });
+    //指令是可以复用的所以作用域的问题要进行控制,默认是共享作用域的
+    app.controller('ctrl',['$scope',function ($scope) {
+        $scope.data1 = [
+            {title : '语文',content : '11111'},
+            {title : '数学',content : '22222'},
+            {title : '英语',content : '33333'}
+        ];
+        $scope.data2 = [
+            {title : '物理',content : '44444'},
+            {title : '化学',content : '55555'}
+        ]
+    }]);
+
+</script>
+</body>
+</html>

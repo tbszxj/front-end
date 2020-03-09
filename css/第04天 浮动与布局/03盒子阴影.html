@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h1 {
+            font-size: 100px;
+            text-shadow: 10px 3px 3px rgba(0,0,0,0.5) ; /*水平距离 垂直距离 模糊距离 阴影颜色*/
+        }
+        div { /*盒子阴影有6个值，前两个必须 后面可省略*/
+            width: 200px;
+            height: 200px;
+            border: 5px solid red;
+            box-shadow: 5px 5px 3px 4px rgba(0,0,0,0.4) inset; /*水平位置，垂直位置，模糊距离，阴影尺寸，阴影颜色 内/外阴影 (默认外阴影)*/
+
+            /*box-shadow: 0 15px 30px rgba(0,0,0,0.4);*/
+        }
+    </style>
+</head>
+<body>
+<h1>稳住，我们能赢！</h1>
+<div></div>
+<img src="../images/盒子阴影.JPG" alt="">
+</body>
+</html>

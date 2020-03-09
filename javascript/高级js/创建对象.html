@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创建对象</title>
+</head>
+<body>
+
+    <script>
+        //创建对象方式1
+        /*var stu = {
+            name : 'zs',
+            age : 18,
+            subject : '语文',
+            say : function () {
+                console.log('大家好，我是'+this.name);
+            }
+        }
+        function fn(stu) {
+        }
+        //方法中的this，是调用这个方法的对象
+        stu.say();
+        var fun = stu.say;
+        window.fun();//window中有name属性（方法中的this与调用方式有关）
+        */
+
+        //创建对象方式2
+        var stu = new Object();
+        stu.name = 'zs';
+        stu.age = 18;
+        stu.subject = '语文';
+        stu.say = function() {
+            console.log(this.age);
+        }
+        //创建对象方式3 适用于创建多个对象
+        function createStudent(name,age,subject,score){
+            var o = new Object();
+            o,name = name;
+            o.age = age;
+            o.subject = subject;
+            o.score = score;
+            return 0;
+        }
+        var s1 = createStudent('zs',18,'语文',80);
+        var s2 = createStudent('ls',19,'数学',100);
+
+        //创建对象方式4 自定义构造函数
+        function Student(name,age,subject,score){
+            this.name = name;
+            this.age = age;
+            this.subject = subject;
+            this.score = score;
+            this.say = function() {
+                console.log(this.age);
+            }
+        }
+        var s1 = new Student('zs',18,'语文',100);
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>检测用户输入</title>  
+        <style>
+            .bg {
+                background-color: yellow;
+            }
+        </style>         
+    </head>
+    <body> 
+        <form action="">
+            <input type="text" name="name" id="name"><br>
+            <input type="password" name="pwd" id="pwd"><br>
+            <input type="submit" value="登录" id="btnlogin">
+        </form>
+        
+        <script>          
+           //检测用户是否输入，密码是否是6-8位，如果不满足要求高亮文本
+           //1.给登录按钮注册点击事件
+           var btnlogin = document.getElementById('btnlogin');
+           btnlogin.onclick = function () {
+                //2.检测用户名是否是3-6位，如果不满足要求高亮文本
+                var txtName = document.getElementById('name');
+                if (txtName.value.length < 3 || txtName.value.length > 6) {
+                    txtName.className = 'bg';
+                    //取消submit的默认行为
+                    return false;
+                } else {
+                    txtName.className = '';
+                }
+                //3.密码是否是6-8位，如果不满足要求高亮文本
+                var txtPwd = document.getElementById('pwd');
+                if (txtPwd.value.length < 6 || txtPwd.value.length > 8) {
+                    txtPwd.className = 'bg';
+                    //取消submit的默认行为
+                    return false;
+                } else {
+                    txtPwd.className = '';
+                }              
+           }           
+        </script>
+    </body>   
+</html>

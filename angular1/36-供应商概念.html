@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>供应商概念</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+
+</head>
+<body>
+<div ng-controller="ctrl">
+    <p>@@showText@@</p>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+
+    //供应商完成服务的初始配置操作，以插值为例
+    app.config(['$interpolateProvider',function ($interpolateProvider) {
+        //配置表达式以什么开始和结束，默认{{开始 }}结束
+        $interpolateProvider.startSymbol('@@');
+        $interpolateProvider.endSymbol('@@');
+    }]);
+
+    app.controller('ctrl',['$scope','$interpolate',function ($scope,$interpolate) {
+
+        $scope.showText = 'hello';
+
+    }]);
+
+</script>
+</body>
+</html>
+
+

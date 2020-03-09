@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>动画插件</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.7.8/angular-resource.min.js"></script>
+</head>
+<body>
+<div ng-controller="ctrl">
+    {{data}}
+</div>
+<script>
+    var app = angular.module("myApp",['ngResource']);
+    app.controller('ctrl',['$scope','$resource',function ($scope,$resource) {
+
+        //功能类似于$http，处理更为复杂的操作
+        var objRe = $resource('index.html');
+        console.log(objRe.get());
+
+        $scope.data = objRe.get();
+
+    }]);
+
+</script>
+</body>
+</html>
+
+

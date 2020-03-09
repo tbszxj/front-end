@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        //元素节点
+        //nodeName 标签的名称
+        //nodeType 节点的类型 1表示元素节点
+        //nodeValue 当是元素节点的时候始终为null
+        var box = document.getElementById('box');
+        console.dir(box);
+
+
+        //属性节点 是一个对象
+        //获取属性节点
+        //nodeName 属性的名称 nodeType节点的类型 2表示属性节点
+        //nodeValue 属性的值
+        console.dir(box.getAttributeNode('id'));
+
+        //模拟DOM文档的结构
+        //属性 id className nodeName nodeType nodeValue
+        function Node(options) {
+            //当不传参数的时候options是undefined
+            options = options || {};//赋默认值
+            this.id = options.id || '';
+            this.className = options.className || '';
+            this.nodeName = options.nodeName || '';
+            this.nodeType = options.nodeType || 1;
+            this.nodeValue = options.nodeValue || null;
+            //设置一个属性记录子元素
+            this.children = [];
+        }
+        //1.html元素
+        var html = new Node({
+            nodeName : 'HTML'
+        });
+        //2.head元素
+        var head = new Node({
+            nodeName : 'HEAD'
+        });
+        html.children.push(head);
+        //3.body元素
+        var body = new Node({
+            nodeName : 'BODY'
+        });
+        html.children.push(body);
+        //4.div元素
+        var div = new Node({
+            nodeName : 'DIV'
+        });
+        body.children.push(div);
+        //5.p元素
+        var p = new Node({
+            nodeName : 'p'
+        });
+        body.children.push(p);
+        console.dir(html);
+    </script>
+    
+</body>
+</html>

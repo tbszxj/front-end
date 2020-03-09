@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件指令</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="ctrl">
+    <!--angularjs提供了类似于原生js的事件指令-->
+    <br><input type="button" ng-click="click()" value="click">
+    <br><input type="button" ng-mousedown="mousedown()" value="mousedown">
+    <br><input type="button" ng-mouseup="mouseup()" value="mouseup">
+    <br><input type="button" ng-mouseenter="mouseenter()" value="mouseenter">
+    <br><input type="button" ng-mouseleave="mouseleave()" value="mouseleave">
+    <br><input type="button" ng-mousemove="mousemove()" value="mousemove">
+    <br><input type="button" ng-mouseover="mouseover()" value="mouseover">
+    <br><input type="button" ng-keydown="keydown()" value="keydown">
+    <br><input type="button" ng-keyup="keyup()" value="keyup">
+    <br><input type="button" ng-keypress="keypress()" value="keypress">
+    <br><input type="text" ng-focus="focus()" value="focus">
+    <br><input type="text" ng-blur="blur()" value="blur">
+</div>
+<script>
+    //过滤器是可以组合使用的
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope','$filter',function($scope,$filter){
+        $scope.click = function () {
+            console.log("click");
+        };
+        $scope.mousedown = function () {
+            console.log("mousedown");
+        };
+        $scope.mouseup = function () {
+            console.log("mouseup");
+        };
+        $scope.mouseenter = function () {
+            console.log("mouseenter");
+        };
+        $scope.mouseleave = function () {
+            console.log("mouseleave");
+        };
+        $scope.mousemove = function () {
+            console.log("mousemove");
+        };
+        $scope.mouseover = function () {
+            console.log("mouseover");
+        };
+        $scope.keydown = function () {
+            console.log("keydown");
+        };
+        $scope.keyup = function () {
+            console.log("keyup");
+        };
+        $scope.focus = function () {
+            console.log("focus");
+        };
+        $scope.blur = function () {
+            console.log("blur");
+        };
+
+    }]);
+</script>
+</body>
+</html>

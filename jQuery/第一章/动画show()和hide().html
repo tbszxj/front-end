@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="显示" id="show">
+<input type="button" value="隐藏" id="hide">
+<input type="button" value="切换" id="toggle"><br><br>
+<div id="div1"></div>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    //jquary提供三组基本动画
+    //1.显示show与隐藏hide是一组
+    //2.滑入slidDown与划出slideUp与切换slideToggle效果与卷帘门类似
+    //3.淡入fadeln与淡出fadeOut与切换fadeToggle
+    $(function () {
+        //1.显示动画效果
+        $('#show').click(function () {
+            //如果show没有参数就没有动画效果，要动画效果要有参数
+            //参数1表示动画时常 ms为单位 也可以是代表时常的字符串 fast(200ms) normal(400ms) slow(600ms)
+            //参数2代表动画执行之后的回调函数
+            $('#div1').show(1000,function () {
+                alert('显示执行完毕了。。。');
+            });
+        });
+        //2.隐藏
+        $('#hide').click(function () {//没有参数直接隐藏，其他参数与show一样
+            $('#div1').hide(500,function () {
+                alert('隐藏执行完毕了。。。');
+            });
+        });
+        //3.toggl
+        $('#toggle').click(function () {
+            //切换，如果显示了就隐藏，如果没显示就显示
+            $('#div1').toggle(1000);
+        })
+    })
+
+</script>
+</body>
+</html>

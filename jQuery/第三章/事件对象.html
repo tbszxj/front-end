@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 2000px;
+            height: 2000px;
+        }
+        .one {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            position: relative;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="one" class="one">
+    <input type="button" value="按钮" id="btn">
+    <br><br>
+    <a href="https:www.baidu.com">百度一下</a>
+</div>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //1.事件对象
+        //注册一个事件，系统就会帮我们生成一个对象记录这个事件触发时候的一些信息
+        //比如触发事件的时候有没有按住某个健，在比如触发这个事件的坐标的信息
+        //jquary中用事件参数e来获取,是js中事件对象的封装，帮我们处理好了兼容性
+        $('#one').on('click',function (e) {
+            console.log(e);
+            //事件中有三个常用的坐标
+            console.log('ScreenX'+e.screenX + ":" +e.screenY);//距离屏幕左上角
+            console.log('clientX'+e.clientX + ":" +e.clientY);//距离页面可是区域左上角
+            console.log('pageX'+e.pageX + ":" +e.pageY);//距离页面左上角的值
+
+            console.log('我是div点击事件');
+        })
+        $('#btn').on('click',function (e) {
+            console.log('我是btn的点击事件');
+            e.stopPropagation();//阻止事件冒泡
+        })
+
+        //给a标签注册点击事件
+        $('a').on('click',function (e) {
+            console.log('我是a标签的点击事件');
+            e.stopPropagation();//阻止事件冒泡
+            e.preventDefault();//阻止默认事件
+
+            return false;//既能阻止事件冒泡又能阻止默认行为
+        })
+        //给页面注册
+        $(document).on('keydown',function (e) {
+            //e.keyword能获取按的是哪个按键
+            console.log(e.keyCode);
+        })
+    })
+</script>
+</body>
+</html>

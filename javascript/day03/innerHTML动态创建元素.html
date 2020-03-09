@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>    
+        //box.innerHTML = '<p>test</p>';
+        console.time('flag');//记录时间
+        var box = document.getElementById('box');
+        var data = ['zs','ls','ww'];
+        box.innerHTML = '<ul>';
+        //遍历数据生成li
+        data.forEach(function (item,index) {
+            //foreach 遍历数组，参数是一个函数
+            //这个函数有两个参数，第一个参数是数组中的元素，第二个参数是索引
+            //console.log(item);
+            //console.log(index);
+            box.innerHTML += '<li>' + item + '</li>'
+        });
+        box.innerHTML += '</ul>';
+        console.timeEnd('flag');
+
+        //更高效的方式
+        console.time('flag1');
+        var arr = [];
+        arr.push('<ul>');
+        //遍历数据生成li
+        data.forEach(function (item,index){
+            arr.push('<li>'+item+'</li>');
+        }); 
+        arr.push('</ul>');
+        box.innerHTML = arr.join('');
+        console.timeEnd('flag1');
+
+    </script>
+</body>
+</html>

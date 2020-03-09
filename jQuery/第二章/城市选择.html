@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    select {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
+    .btn-box button{
+        display: list-item;
+    }
+    div {
+        display: inline-block;
+    }
+</style>
+<body>
+<select id="src-city" name="src-city" multiple>
+    <option value="1">西安</option>
+    <option value="2">广州</option>
+    <option value="3">杭州</option>
+    <option value="4">北京</option>
+    <option value="5">深圳</option>
+</select>
+<div class="btn-box">
+    <button id="btn-sel-all">&gt;&gt;</button>
+    <button id="btn-sel-none">&lt;&lt;</button>
+    <button id="btn-sel">&gt;</button>
+    <button id="btn-back">&lt;</button>
+</div>
+<select id="tar-city" name="tar-city" multiple>
+    
+</select>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //全部到右边
+        $('#btn-sel-all').click(function () {
+            //左边的所有select添加到右边的下拉菜单中
+            $('#src-city>option').appendTo($('#tar-city'));
+        })
+        //全部到左边
+        $('#btn-sel-none').click(function () {
+            $('#tar-city>option').appendTo($('#src-city'));
+        })
+        //选中的到右边
+        $('#btn-sel').click(function () {
+            $('#src-city>option:selected').appendTo($('#tar-city'));
+        })
+        //选中的到左边
+        $('#btn-back').click(function () {
+            $('#tar-city>option:selected').appendTo($('#src-city'));
+        })
+    })
+</script>
+</body>
+</html>

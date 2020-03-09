@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件指令</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="ctrl">
+    <!--angularjs提除了常用的事件指令还有一些选择用的事件指令-->
+    <!--下拉框选指令-->
+    <input type="checkbox" ng-model="aaa">
+    <select>
+        <option>123</option>
+        <option ng-selected="aaa">456</option>
+    </select>
+    <!--输入框改变指令-->
+    <br>
+    <input type="text" ng-change="bbb='hello'" ng-model="bbb">{{bbb}}
+    <br>
+    <input type="text" value="fwowoqhoiw" ng-copy="ccc='true'">{{ccc}}
+    <br>
+    <input type="text" value="fwowoqhoiw" ng-cut="ddd='true'">{{ddd}}
+    <br>
+    <input type="text" value="fwowoqhoiw" ng-paste="eee='true'">{{eee}}
+
+
+</div>
+<script>
+    //过滤器是可以组合使用的
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope','$filter',function($scope,$filter){
+
+    }]);
+</script>
+</body>
+</html>

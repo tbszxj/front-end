@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .one {
+            width: 200px;
+            border: 2px solid red;
+            padding: 20px;
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<div id="one" class="one" style="height: 200px"></div>
+
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        $('#btn').click(function () {
+            //获取宽高不包括内边距
+            console.log($('#one').width());//获取宽度
+            console.log($('#one').height());//获取高度
+
+            //设置宽高
+            $('#one').width(300);//设置宽，不带padding
+            $('#one').height(300);//设置高 不带padding
+
+            //获取宽高包括内边距
+            console.log($('#one').innerWidth());//获取宽度
+            console.log($('#one').innerHeight());//获取高度
+
+            //获取宽高包括内边距 和 border
+            console.log($('#one').outerWidth());//获取宽度
+            console.log($('#one').outerHeight());//获取高度
+
+            //获取宽高包括内边距 和 border + margin
+            console.log($('#one').outerWidth(true));//获取宽度
+            console.log($('#one').outerHeight(true));//获取高度
+
+            //获取页面可视区域宽高
+            console.log($(window).width());//获取宽度
+            console.log($(window).height());//获取高度
+        })
+    })
+</script>
+</body>
+</html>

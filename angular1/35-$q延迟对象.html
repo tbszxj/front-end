@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>延迟服务</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-controller="ctrl">
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope','$q',function ($scope,$q) {
+
+        var def = $q.defer();//定义
+
+        function show() {
+            setTimeout(function () {
+                //def.resolve();//成功时触发的方法
+                def.reject();//reject失败时触发的方法
+                //notify通知
+                //then监听成功失败的回调处理
+            },2000);
+            return def.promise;
+        };
+        
+        show().then(function () {
+            alert('成功');
+        },function () {
+            alert('失败');
+        })
+    }]);
+
+</script>
+</body>
+</html>
+
+

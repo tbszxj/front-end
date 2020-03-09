@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>自定义服务</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+
+    <!--导入服务js-->
+    <script src="service.js"></script>
+
+</head>
+<body>
+<div ng-controller="ctrl">
+
+</div>
+<script>
+
+    //引入其他模块，可以调用其他模块中的内容
+    var app = angular.module("myApp",['module']);
+
+    //使用service定义服务
+    app.service('myService',FnService);
+    function FnService(){
+        this.name = 'hello';
+    }
+    FnService.prototype.age = '22';
+    //设置常类
+    app.constant('const1','const1');
+    app.value('const2','const2');
+
+
+    //配置
+    app.config(['myServiceProvider',function (myServiceProvider) {
+        console.log(myServiceProvider);
+        myServiceProvider.name = 'hi';
+        console.log(myServiceProvider);
+    }]);
+    app.controller('ctrl',['$scope','myService','myRandomNum','const1','const2',function ($scope,myService,myRandomNum,const1,const2) {
+
+        console.log(myService.name);
+        console.log(myService.age);
+
+        console.log(myRandomNum(-3,6));
+
+        console.log(const1);
+        console.log(const2);
+
+    }]);
+
+</script>
+</body>
+</html>
+
+

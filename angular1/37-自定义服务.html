@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>自定义服务</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+
+</head>
+<body>
+<div ng-controller="ctrl">
+
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+
+    //app.filter();//自定义过滤器
+    //app.directive();//自定义指令
+    //app.factory();//自定义服务(不能进行初始化配置)
+    //app.provider();//自定义服务（可以进行初始化配置）
+
+    app.provider('myService',function () {
+        return{
+            name :'hello',
+            $get : function () {
+                return {
+                    name : this.name,
+                    show : function () {
+                        return this.name + ':angular';
+                    }
+                }
+            }
+        }
+    });
+    //生成随机数的服务
+    app.factory('myRandomNum',['$log',function () {
+        return function (num1,num2) {
+            return Math.random()*(num2-num1)+num1;
+        }
+    }]);
+
+
+    //配置
+    app.config(['myServiceProvider',function (myServiceProvider) {
+        console.log(myServiceProvider);
+        myServiceProvider.name = 'hi';
+        console.log(myServiceProvider);
+    }]);
+    app.controller('ctrl',['$scope','myService','myRandomNum',function ($scope,myService,myRandomNum) {
+
+        console.log(myService.show());
+
+        console.log(myRandomNum(-3,6));
+
+    }]);
+
+</script>
+</body>
+</html>
+
+

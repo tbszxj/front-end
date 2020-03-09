@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn1"><br>
+<input type="checkbox" id="chk1"><br>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //有一类属性比如checked 写在元素的身上表示选中，没有写在元素上表示不选中
+        $('#btn1').click(function () {
+            console.log($('#chk1').prop('checked'));//获取多选框的状态
+        })
+    })
+</script>
+</body>
+</html>

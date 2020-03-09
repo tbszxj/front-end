@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>根据标签获取元素</title>       
+    </head>
+    <body>
+        <div class="a">111</div>
+        <div class="a">222</div>
+        <div >333</div>
+        <p>ppp</p>
+        <script>
+            //根据类名获取元素
+            var divs = document.getElementsByClassName('a');
+            console.log(divs);
+            
+            //使用选择器查询元素,查找该类第一个元素
+            var div = document.querySelector('.a');//使用类选择器
+            console.log(div);
+            //使用选择器查询所有,返回的是nodeList的集合
+            var divs = document.querySelectorAll('.a');
+            console.log(divs);
+        </script>
+    </body>   
+</html>

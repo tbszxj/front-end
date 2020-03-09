@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <style>
+        #div1 div,#div2 div{
+            width: 200px;
+            height: 200px;
+            border: 1px red solid;
+            display: none;
+        }
+        #div1 input.active,#div2 input.active{
+            background-color: red;
+        }
+
+    </style>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-app="myApp" ng-controller="ctrl">
+    <my-tab my-id="div1" my-name="name" my-fn="show(num)"></my-tab>
+    <my-tab my-id="div2" my-name="name" my-fn="show(num)"></my-tab>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    //定义自定义指令
+    app.directive('myTab',function () {
+        return {
+            //restrict指定指令的模式 E标签 A属性 C类的方式 M注释
+            //可以将模式进行组合，区分大小写
+            restrict : 'E',
+            //控制使用独立作用域（外部作用域）
+            //scope : true,
+            //控制使用隔离作用域（内部作用域）
+            scope : {//数据的绑定方式 @ = &
+                myId : '@', //将数据视为字符串
+                myName : '=', //绑定作用域中的数据对象
+                myFn : '&' //绑定函数
+            },
+            controller : ['$scope',function ($scope) {
+                //此处的数据共享
+                $scope.name = 'hhh';
+            }],
+            //template指定标签中显示的模板
+            template : '<div id="{{myId}}">\n' +
+                '        <input class="active" type="button" value="1" ng-click="myFn({num : 123})">\n' +
+                '        <input type="button" value="2">\n' +
+                '        <input type="button" value="3">\n' +
+                '        <div style="display: block">{{myName}}</div>\n' +
+                '        <div>22222</div>\n' +
+                '        <div>33333</div>\n' +
+                '    </div>'
+            //代码较多的时候可以使用templateUrl来指定一个页面
+            //templateUrl : 'xxx.html'
+        }
+    });
+
+    //指令是可以复用的所以作用域的问题要进行控制,默认是共享作用域的
+    app.controller('ctrl',['$scope',function ($scope) {
+        $scope.name = 'hello';
+
+        $scope.show = function (n) {
+            alert(n);
+        };
+    }]);
+
+</script>
+</body>
+</html>

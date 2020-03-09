@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    
+    <script>
+        var box = document.getElementById('box');
+        //样式操作
+        //1.设置类样式
+        //box.className = 'box';
+        //2.设置style       
+        //box.style.width = '200px';
+        //box.style.height = '200px';
+        //box.style.backgroundColor = 'yellow';
+
+        //通过style.cssText设置
+        //console.log(box.style.cssText);
+        box.style.cssText = 'width: 200px; height: 200px; background-color: yellow;';
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .warp ul {
+            width: 1000px;
+            list-style: none;
+            top: 30px;
+        }
+        .warp ul li{
+            width: 300px;
+            display: inline-block;
+        }
+        .warp img {
+            display: block;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="warp">
+    <ul>
+        <li>
+            <a href="javascript:void(0)"><img src="../images/1.JPG"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0)"><img src="../images/2.JPG"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0)"><img src="../images/3.JPG"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0)"><img src="../images/4.JPG"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0)"><img src="../images/5.JPG"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0)"><img src="../images/6.JPG"></a>
+        </li>
+    </ul>
+</div>
+
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        $('.warp li').mouseenter(function () {
+            //$(this).css('opacity',0.4);
+            $(this).css('opacity',1).siblings('li').css('opacity',0.4);
+        });
+        $('.warp li').mouseleave(function () {
+            //$(this).css('opacity',1);
+            $(this).siblings('li').css('opacity',1);
+        });
+        $('body').css('backgroundColor','black');
+    })
+
+</script>
+</body>
+</html>

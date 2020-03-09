@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>事件的内部传播方式</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+</head>
+<body>
+<div ng-controller="ctrl">
+    {{count}}
+    <!--<div ng-controller="ctrl" ng-click="count = count +1">此时不会影响其他地方的值-->
+    <div ng-controller="ctrl" ng-click="$emit('myEvent')"> <!--此时$emit向上广播，会影响父级的count-->
+        <!--<div ng-controller="ctrl" ng-click="$broadcast('myEvent')">&lt;!&ndash;此时$emit向下广播，会影响子级的count&ndash;&gt;-->
+        {{count}}
+        <div ng-controller="ctrl">
+            {{count}}
+        </div>
+    </div>
+</div>
+<script>
+
+    var app = angular.module("myApp",[]);
+    app.controller('ctrl',['$scope',function ($scope) {
+
+        $scope.count = 0;
+
+        $scope.$on('myEvent',function () {
+            $scope.count++;
+        })
+
+    }]);
+
+
+</script>
+</body>
+</html>
+
+

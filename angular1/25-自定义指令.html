@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-app="myApp" ng-controller="ctrl">
+    <hello></hello>
+    <p hello=""></p>
+    <div class="hello"></div>
+
+    <!--注释写法-->
+    <!-- directive:hello -->
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+
+    //定义自定义指令
+    app.directive('hello',function () {
+        return {
+            //restrict指定指令的模式 E标签 A属性 C类的方式 M注释
+            //可以将模式进行组合，区分大小写
+            restrict : 'AECM',
+            //想要注释指令生效需要将replace设置为true
+            replace : true,
+            //template指定标签中显示的模板
+            template : '<div>hello angular</div>'
+        }
+    });
+
+
+    app.controller('ctrl',['$scope',function ($scope) {
+
+    }]);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        console.log(jQuery.fn.jquery);
+        console.log(jQuery.prototype.jquery);
+        console.log($.fn.jquery);
+        console.log($.prototype.jquery);
+
+        //如果引入了多个jquery文件，那使用的是哪个jQuery文件中的
+        //哪个文件后引入使用的就是哪个文件的，后引入的覆盖前引入的
+
+        //3.多库共存
+        //jQuery有个方法
+        $.noConflict();//把$符号的控制权释放，释放后使用jQuery来使用本版本
+
+    })
+</script>
+</body>
+</html>

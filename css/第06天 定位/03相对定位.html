@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        div:nth-child(2) {
+            background-color: purple;
+            top: 20px;
+            left: 30px;
+            position: relative; /*自恋型 每次移动位置是相对自己左上角的位置移动*/
+            /*位置移动，原来的位置继续占有   相对定位不脱离标准流  浮动脱离标准流*/
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div>2</div>
+<div></div>
+</body>
+</html>

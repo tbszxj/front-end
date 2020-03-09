@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            /*display: inline-block; !*转换为行内块元素可以放在一行上 有宽度高度 但是盒子之间有空隙 几乎不可去掉*!*/
+            float: left; /*左侧浮动 div放在同一行，盒子之间没有空隙*/
+        }
+        div:first-child {
+            background-color: skyblue;
+        }
+        div:nth-child(2) {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

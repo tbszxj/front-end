@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style-type: disc;
+        }
+        #menu ul li.current {
+            background-color: bisque;
+        }
+        #menu ul li a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <ul>
+            <!--冒号前面是协议，告诉浏览器怎么处理，例如http -->
+            <!--void关键字 void会执行（）里面的语句，但总是返回undefined-->
+            <li class="current"><a href="javascript:void(0)">首页</a></li>
+            <li><a href="javascript:void(0)">播客</a></li>
+            <li><a href="javascript:void(0)">博客</a></li>
+            <li><a href="javascript:void(0)">相册</a></li>
+            <li><a href="javascript:void(0)">关于</a></li>
+            <li><a href="javascript:void(0)">帮助</a></li>
+        </ul>
+        <script>
+            //获取menu的所有a
+            var menu = document.getElementById('menu');
+            //menu.children[0]
+            //menu.getElementsByTagName('ul')[0]
+            var ul = menu.firstElementChild;
+            var list = ul.children;
+            //遍历li
+            for (var i=0;i<list.length;i++) {
+                //获取li中的a
+                var link = list[i].firstElementChild;
+                //注册事件
+                link.onclick = linkClick;
+            }
+            //事件处理函数
+            function linkClick() {
+                //取消所有li的高亮显示
+                for (var i=0;i<list.length;i++) {
+                    list[i].className = '';
+                }
+                this.parentNode.className = 'current';
+                return false;
+            }
+            
+        </script>
+    </div>
+</body>
+</html>

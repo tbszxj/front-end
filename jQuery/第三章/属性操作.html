@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="获取属性" id="btn1">
+<input type="button" value="设置属性" id="btn2">
+<input type="button" value="移除属性" id="btn3">
+<br><img src="../images/1.JPG" alt="asdasd" title="周五晚睡" aaa="aaa">
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //jquary中操作属性 attr() removeAttr()
+        //1.设置属性
+        $('#btn2').click(function () {
+            //第一个参数属性名 ；第二个参数属性值
+            $('img').attr('src','../images/2.jpg');//修改默认属性
+            $('img').attr('aaa',"hahaha");//修改自定义属性
+            $('img').attr('bbb','bilibili');//如果元素原先没有这个属性就添加属性
+
+            //设置多属性,传递对象
+            $('img').attr({
+                src:"../images/3.jpg",
+                aaa:'hello',
+                bbb:'bbb'
+            });
+        });
+
+        //获取属性
+        $('#btn1').click(function () {
+            //获取值只传递属性名
+            console.log($('img').attr("src"));//获取自带属性
+            console.log($('img').attr('aaa'));//获取自定义属性
+            console.log($('img').attr('ccc'));//获取不存在的属性，返回undefined
+        })
+
+        //移除属性
+        $('#btn3').click(function () {
+            $('img').removeAttr('alt');//移除自带属性
+            $('img').removeAttr('aaa');//移除自定义属性
+            $('img').removeAttr('ccc');//移除存在属性，没有问题
+            //$('img').removeAttr('alt aaa ccc');//移除多个属性
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>http服务</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-controller="ctrl">
+    <input type="text" ng-model="name" ng-keyup="change(name)">
+    <input type="button" value="搜素">
+    <ul>
+        <li ng-repeat="d in data">{{d}}</li>
+    </ul>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    app.config(function($sceDelegateProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist([
+            'https://www.baidu.com/**']);
+    });
+
+    app.controller('ctrl',['$scope','$http','$timeout','$sce',function ($scope,$http,$timeout,$sce) {
+
+        $scope.data = [];
+        var timer = null;//延时请求，提高性能
+
+        $scope.change = function(){
+            $timeout.cancel(timer);
+            timer = $timeout(function () {
+                $http({
+                    method : 'JSONP',
+                    url : 'https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=1424,21097,29073,29523,29721,29567,29220&wd=ac&req=2&csor=2&pwd=a'
+                }).then(function successCallback (response) {
+                    $scope.data = response.data;
+                },function errorCallBack(response) {
+                    console.log(response);
+                })
+            },500)
+        };
+
+        //简写形式
+        //$http.get('/someUrl', config).then(successCallback, errorCallback);
+
+
+
+    }]);
+
+</script>
+</body>
+</html>

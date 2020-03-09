@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            font-family: verdana,arial,sans-serif;
+            font-size:11px;
+            color:#333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+        table th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+        table td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div id="c">
+
+</div>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/jQuery-table.js"></script>
+<script>
+    $(function () {
+        $('#c').table(['序号','姓名','年龄','工资'],[
+            {n: 'xy',age:20,s:10},
+            {n: 'wu',age:20,s:9},
+            {n: 'pl',age:21,s:8}
+        ])
+    })
+</script>
+</body>
+</html>

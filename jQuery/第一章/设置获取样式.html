@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="获取" id="getBtn">
+<input type="button" value="设置" id="setBtn">
+
+<div id="div1" style="width: 200px;height:200px;border: 1px solid red"></div>
+<div id="div2" style="width: 200px"></div>
+<div id="div3" style="width: 200px"></div>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //css方法，设置/获取样式
+        //1.获取样式
+        $('#getBtn').click(function () {
+            //获取id为div1的样式
+            console.log($('#div1').css('width'));//可以使用驼峰命名法
+
+            //获取div的样式
+            console.log($('div').css('width'));//只会获取第一个的样式
+        });
+        //设置样式,设置的是行内样式
+        $('#setBtn').click(function () {
+            //给div1设置样式
+            //$('#div1').css('width','300px');//设置单样式
+
+            $('#div1').css({//设置多样式，传递对象
+                'width' : '300px',
+                'height' : '300px',
+                'backgroundColor' : 'green'
+            })
+        })
+
+
+
+    });
+</script>
+</body>
+</html>

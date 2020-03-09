@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+        .demo 类选择器
+        :first-child 伪类选择器
+        ::first-letter伪元素选择器
+        */
+        p::first-letter { /*选择元素的第一个字*/
+            color: red;
+            font-size: 50px;
+        }
+        p::first-line { /*选中第一行*/
+            color: green;
+        }
+        p::selection { /*鼠标选择的字符*/
+            color: pink;
+        }
+
+        div::before {
+            content: "开始";
+        }
+        div::after {
+            content: "结束";
+        }
+    </style>
+</head>
+<body>
+<h1>freestyle</h1>
+<p>英语词汇，一般指即兴的、随性的随意的发挥，例如HIPHOP说唱中的freestyle就是即兴说唱的意思。
+    2017年6月，因吴亦凡在国产说唱综艺《中国有嘻哈》中屡次提起freestyle而火遍网络。</p>
+
+  <div>div</div>
+</body>
+</html>

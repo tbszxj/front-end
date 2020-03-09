@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn" value="按钮">
+    <ul id="ul">
+        <li>1111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>555</li>
+        <li>666</li>
+    </ul>
+    <p>分割线</p>
+    <ul id="second">
+
+    </ul>
+    <script>
+        //移动li
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+            var ul = document.getElementById('ul');
+            var second = document.getElementById('second');
+            //如果元素存在引用，移动到新位置
+            second.appendChild(ul.children[0]);
+        }
+    </script>
+</body>
+</html>

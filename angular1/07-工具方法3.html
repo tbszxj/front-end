@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工具方法2</title>
+    <script src="lib/angular/angular.js"></script>
+    <script>
+        //1.version()方法，当前使用angular的版本
+        console.log(angular.version);
+        //2.equals()方法，判断两个对象是否相等
+        var a = 1;
+        var b = 1;
+        console.log(angular.equals(a,b));
+        //3.forRach()遍历数组,接收三个参数
+        //元数据对象，处理函数，结果存放对象
+        var values = ['a','b','c'];
+        var result = [];
+        angular.forEach(values,function (value,i) {
+            console.log(value);
+            console.log(i);
+            this.push(value + i)
+        },result);
+        console.log(result);
+        //4.fromJson和toJson类似于原生js中的JSON.parse()和JSON.stringify()
+        var str = '{"name":"zxj","age":"22"}';
+        var json = angular.fromJson(str);
+        console.log(json);
+        //将json转化为字符串可以使用参数来格式化
+        console.log(angular.toJson(json,true));
+        //5.identify和noop方法 一般用于设置默认值时的辅助
+        console.log(angular.identity("123"));
+        console.log(angular.noop());
+        //6.lowercase / uppercase大小写转化
+        console.log(angular.$$lowercase("ABC"));
+        console.log(angular.$$uppercase("abc"));
+        //7.element方法获取元素，进行类似jquery的操作
+        //var oDiv = document.getElementById("div1");
+        console.log(angular.element(document.querySelector("#div1")));
+    </script>
+</head>
+<body>
+<div id="div1">aaaaa</div>
+</body>
+</html>

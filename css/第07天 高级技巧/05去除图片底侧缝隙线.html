@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 500px;
+            height: 313px;
+            background-color: pink;
+        }
+        img {
+            /*display: block;*/ /*转换为块级元素就不会有缝隙*/
+            vertical-align: middle; /*不和基线对齐就能解决上述问题*/
+        }
+    </style>
+</head>
+<body>
+<div>
+    <!--行内块元素会和基线对齐，底侧有缝隙-->
+    <img src="../images/xunguang-4.jpg" alt="">
+</div>
+</body>
+</html>

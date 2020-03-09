@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .warp li ul {
+            position: absolute;
+            top: 30px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="warp">
+    <ul>
+        <li>
+            <a href="javascript:void(0)">一级菜单1</a>
+            <ul>
+                <li>一级1</li>
+                <li>一级2</li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0)">一级菜单2</a>
+            <ul>
+                <li>一级1</li>
+                <li>一级2</li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0)">一级菜单3</a>
+            <ul>
+                <li>一级1</li>
+                <li>一级2</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    //筛选选择器的功能与过滤选择器有点类似，但用法不一样
+    //children()
+    //find()
+    //siblings() 获取兄弟
+    //parent()
+    //eq()
+    //next()
+    //prev()
+    $(function () {
+        //给一级惨淡设置鼠标移入事件
+        //mouseover在移动到其元素及子元素上都会触发
+        //mouseenter事件只会在移动的选取的元素上时触发。
+        $('.warp>ul>li').mouseenter( function () {
+            //$(this).children('ul').css('display','block');
+            $(this).children('ul').show();
+        })
+        $('.warp>ul>li').mouseleave( function () {
+            //$(this).children('ul').css('display','none');
+            $(this).children('ul').hide();
+        })
+    })
+
+</script>
+</body>
+</html>

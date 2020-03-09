@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令扩展部分</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="ctrl">
+    <!--初始化-->
+    <div ng-repeat="arrOuter in arr" ng-init="outerIndex = $index">
+        <div ng-repeat="arrInner in arrOuter" ng-init="innerIndex = $index">
+            <p>{{arrInner}} : {{outerIndex}}{{innerIndex}}</p>
+        </div>
+    </div>
+    <!--包含-->
+    <div ng-include="xxx.html">
+        此处会引入xxx.html中的内容
+    </div>
+    <!--ng-module扩展-->
+    <input type="text" ng-model="text" ng-model-options="{updateOn:'blur'}">
+    <p>{{text}}</p>
+</div>
+<script>
+    //过滤器是可以组合使用的
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope',function($scope){
+
+        $scope.arr = [['a','b'],['c','d']];
+
+    }]);
+</script>
+</body>
+</html>

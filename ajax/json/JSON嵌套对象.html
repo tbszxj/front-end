@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON嵌套对象</title>
+</head>
+<body>
+<h2>访问JSON内嵌对象。</h2>
+<p id="demo"></p>
+
+<h2>删除对象属性</h2>
+<p id="demo1"></p>
+
+<script>
+    var myObj, i, x = "";
+    myObj = {
+        "name":"runoob",
+        "alexa":10000,
+        "sites": {
+            "site1":"www.runoob.com",
+            "site2":"m.runoob.com",
+            "site3":"c.runoob.com"
+        }
+    }
+    document.getElementById("demo").innerHTML += myObj.sites.site1 + "<br>";
+    // 或者
+    document.getElementById("demo").innerHTML += myObj.sites["site1"];
+    //删除对象属性
+    delete myObj.sites.site1;
+
+    for (i in myObj.sites) {
+        x += myObj.sites[i] + "<br>";
+    }
+
+    document.getElementById("demo1").innerHTML = x;
+</script>
+
+
+</body>
+</html>

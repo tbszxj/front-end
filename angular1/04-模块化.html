@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模块化</title>
+    <script src="lib/angular/angular.js"></script>
+    <script>
+        //angularjs通过angular.module创建一个模块，有两个参数
+        //第一个参数是模块的名字
+        //第二个模块是该模块依赖的其他模块，没有就是空数组
+        //模块化的好处是可以降低冲突。提高重用率
+        //ng-app指令的作用是指定从那个模块开始初始化
+        var app = angular.module('myApp', []);
+
+        //定义完模块后，在模块中创建控制器
+        //一般来说一个html文件中只创建一个模块，一个模块中有多个控制器
+        //$scope的作用域是作用在控制器上的,下面的写法不支持压缩，可以通过改写来支持压缩
+        app.controller('myCtrl', function($scope, $timeout) {
+            $scope.name = "zxj";
+        });
+
+        app.controller('myCtrl2', function($scope, $timeout) {
+            $scope.name = "zxj2";
+        });
+    </script>
+</head>
+
+<body ng-app="myApp">
+<!--第一个控制器-->
+<div ng-controller="myCtrl">
+    <p>{{name}}</p>
+</div>
+
+<!--第二个控制器-->
+<div ng-controller="myCtrl2">
+    <p>{{name}}</p>
+</div>
+</body>
+</html>

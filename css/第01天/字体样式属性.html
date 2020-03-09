@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h2 {
+            font-size: 30px;/*字体大小 单位：px（像素）cm（厘米）*/
+            color:orange;/*字体颜色*/
+            font-family: "Microsoft YaHei UI";/*字体 宋体 微软雅黑等*/
+        }
+        h4 {
+            font-size: 20px;
+            color: purple;
+            font-family: "宋体","微软雅黑";/*多个字体用逗号隔开，如果有宋体优先用宋体，没有就用微软雅黑，在没有就是系统默认字体*/
+        }
+        span {
+            font-weight: bold;/*加粗*/
+            font-style: italic;/*倾斜*/
+        }
+        em {
+            font-style: normal;/*正常显示*/
+            color: green;
+        }
+        div {
+            font: italic bold 14px "宋体";/*综合写法 严格按顺序来写*/
+            /*font: 14px "宋体";*/  /*可以省略前两个，必须要有字体大小和字体*/
+        }
+    </style>
+</head>
+<body>
+<h2>字体样式属性</h2>
+<h4>font-size:字号大小</h4>
+<img src="../images/字体大小单位.JPG">
+<h4>font-family:字体</h4>
+<img src="../images/font-family.JPG">
+<h4>CSS Unicode字体</h4>
+<img src="../images/Unicode字体.JPG">
+<h4>font-weight:字体粗细</h4>
+<span>加粗倾斜的效果</span><br>
+<img src="../images/字体粗细.JPG">
+<h4>font-styly:字体风格</h4>
+<em>让倾斜的不倾斜</em>
+
+<h4>font:综合设置字体样式(重点)</h4>
+<div>一行设置样式 顺序 font-style font-weight font-size font-family</div>
+<img src="../images/综合样式设置.JPG">
+
+
+</body>
+</html>

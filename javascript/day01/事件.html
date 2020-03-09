@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>根据name获取元素</title>       
+    </head>
+    <body>       
+        <input type="button" id="btn" value="点我"><br>
+        <a href="http://www.baidu.com" id="link">baidu</a>
+        <script>
+            //可以给页面上所有可见的元素注册事件
+            var link = document.getElementById('link');
+
+            link.onclick = function() {
+                alert("hello");
+                //取消后续事件的执行，此处禁止跳转
+                return false;
+            }
+
+
+            //根据id获取元素
+            var btn = document.getElementById('btn');
+            //给按钮注册事件
+            //onclick
+            btn.onclick = function() {
+                //匿名函数
+                alert('别点我');
+            }    
+            //事件的三要素
+            //事件源：触发事件的元素
+            //事件名称：click
+            //事件的处理函数：触发事件之后做的事情      
+        </script>
+    </body>   
+</html>

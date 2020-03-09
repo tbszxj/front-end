@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>run方法</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div>
+    {{name}}
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    // app.controller('firstController',function($scope){
+    //
+    // })
+    //模块不仅可以创建控制器，如果只想初始化一些全局数据可以使用run方法（只能是全局作用域）
+    app.run(['$rootScope',function ($rootScope) {
+        $rootScope.name = 'hello';
+    }])
+</script>
+</body>
+</html>

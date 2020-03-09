@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>location服务</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-controller="ctrl">
+
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope','$location',function ($scope,$location) {
+
+        var absUrl = $location.absUrl();
+        console.log(absUrl);
+
+        //使用replace会替换历史路径
+        $location.path('/aaa').replace();
+        $location.hash('hello');
+        $location.search({
+            'age':'20'
+        });
+        var path = $location.path();
+        var hash = $location.hash();
+        console.log(path);
+        console.log(hash);
+
+        var protocol = $location.protocol();
+        var host = $location.host();
+        var port = $location.port();
+        console.log(protocol);
+        console.log(host);
+        console.log(port);
+
+    }]);
+
+</script>
+</body>
+</html>

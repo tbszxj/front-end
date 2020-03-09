@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>结构伪类选择器</title>
+    <style>
+        li:first-child {/*第一个孩子*/
+            color: pink;
+        }
+        li:last-child { /*最后一个孩子*/
+            color: purple;
+        }
+        li:nth-child(4){ /*匹配第几个子元素*/
+            color: skyblue;
+        }
+        li:nth-child(even) { /*选择偶数子元素*/
+             color: red;
+         }
+        li:nth-child(odd) { /*选择奇数子元素*/
+            color: blue;
+        }
+        li:nth-child(n) { /*从0开始全选*/
+            color: black;
+        }
+        li:nth-child(2n) { /*选择所有偶数*/
+            color: green;
+        }
+        li:nth-child(zn+1) { /*选择2n+1个子元素*/
+            color: pink;
+        }
+
+        li:nth-last-child(even) { /*从最后一个元素开始数*/
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>第一个孩子</li>
+    <li>第二个孩子</li>
+    <li>第三个孩子</li>
+    <li>第四个孩子</li>
+    <li>第五个孩子</li>
+    <li>第六个孩子</li>
+    <li>第七个孩子</li>
+</ul>
+
+</body>
+</html>

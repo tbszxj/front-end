@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器扩展</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="ctrl">
+    <!--过滤器组合使用-->
+    {{name | limitTo:5 | uppercase}}<br>
+    <!--在js中使用过滤器-->
+    {{str}}<br>
+    {{number}}<br>
+    <!--自定义过滤器-->
+    {{'hello' | firstUpper}}
+</div>
+<script>
+    //过滤器是可以组合使用的
+    var app = angular.module("myApp",[]);
+    app.controller('ctrl',['$scope','$filter',function($scope,$filter){
+        $scope.name = 'Zhang San';
+
+        $scope.str = $filter('uppercase')('hello');
+        //带参数过滤器的使用
+        $scope.number = $filter('number')('123695.136789',2);
+
+    }]);
+
+    //自定义过滤器
+    app.filter('firstUpper',function () {
+        return function (str,num) {
+            console.log("参数获取到："+num);
+            return str.charAt(0).toUpperCase() + str.substring(1);
+        }
+    })
+
+</script>
+</body>
+</html>

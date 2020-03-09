@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="html生成表格">
+<input type="button" id="btn2" value="$生成表格">
+<table>
+    <thead>
+        <th>name</th>
+        <th>url</th>
+        <th>type</th>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+</table>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //模拟从后端拿到数据
+        var data = [{
+            name:"zxj",
+            url:"http://www.baidu.com",
+            type:"good"
+        },{
+            name:'xxx',
+            url:'https://www.baidu.com',
+            type:'bad'
+        },{
+            name:'123',
+            url:'asdasdasdasd',
+            type:'normal'
+        }];
+        $('#btn').click(function () {
+            //1.html方法
+            var list = [];
+            for(var i=0;i<data.length;i++){
+                //一次性生成，全部替换
+                list.push('<tr>')
+                for(var key in data[i]){
+                    list.push("<td>");
+                    list.push(data[i][key]);
+                    list.push('</td>');
+                }
+                list.push('</tr>')
+            }
+            //console.log(list.join(''));
+            $('#tbody').html(list.join(''));
+        });
+        $('#btn2').click(function () {
+            //2.$方法
+            for(var i=0;i<data.length;i++){
+                var $tr = $("<tr><td>"+ data[i]['name']+"</td>"+"<td>"+ data[i]['url']+"</td>"+"<td>"+ data[i]['type']+"</td></tr>");
+                $('#tbody').append($tr);
+            }
+        });
+
+    })
+
+</script>
+</body>
+</html>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img id="pic" src="image/tianshi.gif" alt="">
+
+    <script>
+        //body的有效范围是body的内部元素的范围
+        var img = document.getElementById('pic');
+        document.onmousemove = function(e){
+            e = e || window.event;
+            //脱离文档流
+            img.style.position = 'absolute';
+            //clientX和clientY获取的是鼠标在可视区域的位置
+            //img.style.left = e.clientX +'px';
+            //img.style.top = e.clientY + 'px';
+            //获取鼠标再页面中的位置
+            img.style.left = e.pageX +'px';
+            img.style.top = e.pageY + 'px';
+        }
+        //处理pageX和pageY的兼容性问题
+        
+        
+    </script>
+</body>
+</html>

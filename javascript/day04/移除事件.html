@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn" value="按钮">
+
+    <script>  
+        //移除事件的方式
+        var btn = document.getElementById('btn');
+        //让按钮事件只执行一次 onclick时
+        btn.onclick = function () {
+            alert('abc');
+            this.onclick = null;
+        }
+        //使用标准事件注册方式时移除事件
+        btn.addEventListener('click',btnClick,false);           
+        //参数('事件名称','事件处理函数','事件捕获/事件冒泡')
+        //注意：要移除函数不能使用匿名函数
+        function btnClick() {
+            alert('hello');
+            this.removeEventListener('click',btnClick,false); 
+        }
+        //IE老版本中（60集）
+        //移除事件，处理兼容性问题
+        function myRemoveEventListener(element,eventName,callback) {
+            if(element.removeEventListener){
+                element.removeEventListener(eventName,callback,false);
+            }else if(element.detachEvent){
+                element.detachEvent('on'+eventName,callback);
+            }else{
+                element['on'+eventName] = null;
+            }
+        }
+
+
+    </script>
+    
+</body>
+</html>

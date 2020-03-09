@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM操作相关指令</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="ctrl">
+    <!--显示隐藏-->
+    <div ng-show="true">ng-show</div>
+    <div ng-hide="false">ng-hide</div>
+    <div ng-if="true">ng-if</div>
+
+    <!--选择-->
+    <input type="checkbox" ng-model="bBtn">
+    <div ng-switch="bBtn">
+        <p ng-switch-default>默认的效果</p>
+        <p ng-switch-when="false">切换的效果</p>
+    </div>
+
+    <!--open属性针对details属性-->
+    <details ng-open="false">
+        <summary>Copyright 2019.</summary>
+        <p>All pages and pictures on this web site are ***</p>
+    </details>
+
+</div>
+<script>
+    //过滤器是可以组合使用的
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope',function($scope){
+        $scope.text = "sdasaqw";
+
+
+    }]);
+</script>
+</body>
+</html>

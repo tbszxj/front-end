@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽指令</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border: 1px red solid;
+            position: relative;
+        }
+
+    </style>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-app="myApp" ng-controller="ctrl">
+    <div id="div1" my-drag="true"></div>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    //定义自定义指令
+
+    app.directive('myDrag',function () {
+        return {
+            restrict : 'A',
+            link : function (scope,element,attr) {
+                attr.myDrag = angular.equals(attr.myDrag,'true');
+                if(!attr.myDrag){
+                    return false;
+                }
+
+                var disX = 0;
+                var disY = 0;
+                element.on('mousedown',function(ev) {
+                    debugger
+                    var This = this;
+                    disX = ev.pageX - $(this).offset().left;
+                    disY = ev.pageY - $(this).offset().top;
+
+                    $(document).on('mousemove',function (ev) {
+                        $(This).css('left',ev.pageX - disX);
+                        $(This).css('top',ev.pageY - disY);
+                        console.log(ev.pageY - disY);
+                    });
+
+                    $(document).on('mouseup',function () {
+                        $(document).off();
+                    });
+
+                    return false;
+                })
+            }
+        }
+    });
+    //指令是可以复用的所以作用域的问题要进行控制,默认是共享作用域的
+    app.controller('ctrl',['$scope',function ($scope) {
+
+    }]);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            top: 300px;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h1>按键改变颜色</h1>
+    <div id="bgChange">
+        keyCode为：<span id="keyCodeSpan"></span>
+    </div>
+</div>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //给页面注册一个键盘按下事件
+        $(document).on('keydown',function (e) {
+            console.log(e.keyCode);//r 82 g 71 b 66 p 80 y 89
+            switch(e.keyCode){
+                case 82:
+                    $('div').css('backgroundColor','red');
+                    break;
+                case 71:
+                    $('div').css('backgroundColor','green');
+                    break;
+                case 66:
+                    $('div').css('backgroundColor','blue');
+                    break;
+                case 80:
+                    $('div').css('backgroundColor','purple');
+                    break;
+                case 89:
+                    $('div').css('backgroundColor','yellow');
+                    break;
+                default :
+                    $('div').css('backgroundColor','pink');
+                    break;
+            }
+        })
+    })
+</script>
+</body>
+</html>

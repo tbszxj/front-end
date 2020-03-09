@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向数据绑定</title>
+    <script src="lib/angular/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope, $timeout) {
+            //$scope是局部作用域，里面的域对象只能用在对应的controller中
+            $scope.name = "hello";
+            //原生js中的setTimeOut不具备刷新页面的功能
+            //angularjs提供了$timeout来进行定时
+            $timeout(function () {
+                //2s之后刷新数据改为hi，页面会同时改变，数据是双向绑定的
+                $scope.name = 'hi'
+            },2000)
+
+            $scope.show = function () {
+                $scope.name = 'show'
+            }
+        });
+
+
+        app.controller('myCtrl2',function ($scope) {
+            //该变量可以通过ng-model指令绑定，在表单中修改就会对应在域对象中修改
+            $scope.name = 'aaa'
+        })
+    </script>
+</head>
+
+<body ng-app="myApp">
+<!--使用ng-click绑定点击事件函数，点击事件函数在$scope中定义-->
+<div ng-controller="myCtrl" ng-click="show()">
+    <p>{{name}}</p>
+</div>
+
+<div ng-controller="myCtrl2">
+    <!--使用ng-model来进行表单数据的绑定，绑定对象的名字为在$scope中定义的对象名字-->
+    <input type="text" ng-model="name">
+    <p>{{name}}</p>
+</div>
+</body>
+</html>

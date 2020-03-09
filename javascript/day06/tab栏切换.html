@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tab栏切换</title>
+    <style>
+        .message-content ul {
+            padding-top:20px;
+            display: none;
+        }
+        .message-content ul.current {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-menu">
+        <span>新闻</span><i></i>
+        <span>通知</span><i></i>
+        <span>消息</span>
+    </div>
+    <div class="message-content">
+        <ul class="current">
+            <li>这是个大新闻</li>
+        </ul>
+        <ul>
+            <li>这是个通知</li>
+        </ul>
+        <ul>
+            <li>这是个消息</li>
+        </ul>
+    </div>
+    <script>
+        var tabs = document.querySelectorAll('.tab-menu span');
+        var uls = document.querySelectorAll('.message-content ul');
+        for ( var i=0;i<tabs.length;i++) {
+            tabs[i].index = i;
+            tabs[i].onclick = function () {
+                for(var i = 0;i<uls.length;i++) {
+                    uls[i].className = '';
+                }
+                var index = this.index;
+                uls[index].className = "current";
+            }
+        }
+
+    </script>
+</body>
+</html>

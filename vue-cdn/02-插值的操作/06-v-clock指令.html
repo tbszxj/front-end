@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<!--这个指令保持在元素上直到关联实例结束编译。和 CSS 规则如 [v-cloak] { display: none } 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。-->
+<div id="app" v-cloak>
+  {{message}}
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // 在vue解析之前,div中有一个属性v-cloak
+  // 在vue解析之后,div中没有一个属性v-cloak
+  setTimeout(function () {
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello world!'
+      }
+    })
+  }, 1000);
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            background-color: #ccc;
+            margin: 100px auto; /*盒子居中*/
+            text-align: center; /*文字居中*/
+            /*line-height: 100px; !*文字垂直居中对齐*!*/
+            vertical-align: middle; /*实现文字垂直居中  对于块级元素无效*/
+        }
+        img { /*行内块*/
+            /*vertical-align: baseline;*/ /*默认基线对齐*/
+            vertical-align: middle; /*中线对齐*/
+        }
+        textarea {
+            width: 200px;
+            height: 200px;
+            outline: none;
+            resize: none;
+            vertical-align: middle; /*中线对齐*/
+        }
+    </style>
+</head>
+<body>
+<div>文字居中</div>
+<hr>
+<img src="../images/垂直居中.JPG" alt="">图片和文字默认基线对齐，但我们想要中线对齐
+
+
+<hr>
+用户留言：<textarea name="" id="" cols="30" rows="10"></textarea>
+
+</body>
+</html>

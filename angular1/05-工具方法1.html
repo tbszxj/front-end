@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工具方法1</title>
+    <script src="lib/angular/angular.js"></script>
+    <script>
+        //1.isArray()方法判断是否数组
+        var arrary = [];
+        console.log(angular.isArray(arrary));
+        //2.isDate()方法判断是否是日期对象
+        var date = new Date();
+        console.log(angular.isDate(date));
+        //3.isDefined()判断变量是否定义
+        var def = '';
+        console.log(angular.isDefined(def));
+        //4.isUndefined()判断变量是否未定义
+        var undef;
+        console.log(angular.isUndefined(undef));
+        //5.isNumber()方法，判断是否是数字
+        var num = 123;
+        console.log(angular.isNumber(num));
+        //6.isFunction()方法，判断是否是函数
+        function fun(){};
+        console.log(angular.isFunction(fun));
+        //7.isString()方法，判断是否是字符串
+        var str = '123';
+        console.log(angular.isString(str));
+        //8.isObject()方法，判断是否是对象
+        var obj = '';
+        console.log(angular.isObject(obj));
+        //9.isElement()方法，判断是否是元素
+        console.log(angular.isElement(document.body));
+    </script>
+</head>
+</html>

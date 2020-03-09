@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工具方法3</title>
+    <script src="lib/angular/angular.js"></script>
+    <script>
+
+        var app = angular.module('myApp', []);
+        //1.bind()方法，改变this的指向
+        function show(n1,n2) {
+            alert(this);
+            console.log(n1);
+            console.log(n2);
+        }
+        //show(1,2);
+        angular.bind(document,show)(1.2);
+
+        //2. copy()方法，拷贝对象
+        var a = {
+            name : '张三'
+        }
+        var b = {
+            age : 22
+        }
+        //var c = angular.copy(a);
+        //console.log(c);//此时c = a
+
+        //var c = angular.copy(a,b);
+        //console.log(b);//此时b会被a覆盖
+
+        //3. extend()方法，以继承的方式拷贝
+        var c = angular.extend(b,a);
+        console.log(b);//此时b继承a中的属性
+
+        //8.bootstrap动态初始化
+        document.onclick = function () {
+            angular.bootstrap(document,['myApp'])
+        }
+        app.controller('A',['$scope',function ($scope) {
+            $scope.name = 'hello';
+        }])
+    </script>
+</head>
+
+<body>
+
+<div ng-app="myApp1" ng-controller="A">
+    {{name}}
+</div>
+
+<div ng-app="myApp"></div>
+</body>
+</html>

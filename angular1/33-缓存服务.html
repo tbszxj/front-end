@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>缓存服务</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+
+    <style>
+        #parent div {
+            width: 300px;
+            height: 500px;
+            border: 1px red solid;
+            margin: 20px;
+        }
+        #parent ul {
+            width: 200px;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+    </style>
+
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-controller="ctrl">
+
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope','$cacheFactory','$log',function ($scope,$cacheFactory,$log) {
+
+        //angular封装了log服务，与console.log功能相似
+
+        //可以对缓存进行配置，capacity配置长度
+        var cache = $cacheFactory('myCache',{capacity:2});
+
+        cache.put('name','hello');//配置长度为2时这条在长度超出时丢弃
+        cache.put('age','20');
+        cache.put('hello','world');
+
+        console.log(cache.info());
+        console.log(cache.get('hello'));
+
+        cache.remove('hello');
+        console.log(cache.get('hello'));
+
+        //日志服务
+        $log.info('info');
+        $log.warn('warn');
+        $log.debug('debug');
+        $log.error('error');
+
+    }]);
+
+</script>
+</body>
+</html>
+
+

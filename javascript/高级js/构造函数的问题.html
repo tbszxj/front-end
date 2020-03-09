@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //每一个构造函数都有constructor这个属性
+        function Person(name,age,sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.sayHi = sayHi;
+            /*this.sayHi = function () {
+                console.log('大家好，我是'+this.name);
+            }*/
+        }
+        function sayHi() {
+            console.log('大家好，我是'+this.name);
+        }
+        var p1 = new Person('zs',18,'男');
+        var p2 = new Person('ls',19,'男');
+        //false表示p1中的方法和p2中的方法在内存中位置不同，内存浪费
+        //console.log(p1.sayHi === p2.sayHi);//方法写在钩爪函数中
+
+        //写在外面可能存在重名，不方便管理
+        console.log(p1.sayHi === p2.sayHi);
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>动画插件</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.7.8/angular-animate.min.js"></script>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transition: 1s all; /*css3的方式实现动画*/
+        }
+        .box.ng-enter {
+            opacity: 0;
+        }
+        .box.ng-enter-active {
+            opacity: 1;
+        }
+        .box.ng-leave {
+            opacity: 1;
+        }
+        .box.ng-leave-active {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="ctrl">
+    <input type="checkbox" ng-model="bBtn">
+    <div class="box" ng-if="bBtn"></div>
+</div>
+<script>
+
+    //引入动画模块
+    var app = angular.module("myApp",['ngAnimate']);
+    app.controller('ctrl',['$scope',function ($scope) {
+
+        //$scope.bBtn = true;
+    }]);
+
+
+</script>
+</body>
+</html>
+
+

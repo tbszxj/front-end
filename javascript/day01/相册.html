@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>根据name获取元素</title>   
+        <style>
+            .hidden{
+                display: none;
+            }
+        </style>    
+    </head>
+    <body>              
+        <a href="#" id="link">切换图片</a><br>
+
+        <img id="img" src="image/a.jpg" alt="a.jpg" width="192px" height="108"><br>
+        <input type="button" id="btn" value="点我隐藏"><br>
+        <script>
+            //元素的属性------ 包含子标签对应的属性
+            //元素（对象）封装了子标签对应的属性
+
+            //1.获取超链接
+            var link = document.getElementById('link');
+            var flag = 1;//flag=1时显示a.jpg flag=2时显示b.jpg
+            //2.给超链接注册点击事件
+            link.onclick = function() {
+                //3.切换图片
+                var img = document.getElementById('img');
+                if(flag==1){
+                    flag=2;
+                    img.src = 'image/b.jpg';
+                }else{
+                    flag=1;
+                    img.src = 'image/a.jpg';
+                }
+                //取消后续事件的执行，此处禁止跳转
+                return false;
+            }     
+
+            //隐藏图片   
+            var btn = document.getElementById('btn');
+            btn.onclick = function() {
+                var img = document.getElementById('img');
+                img.className = "hidden";
+            }   
+        </script>
+    </body>   
+</html>

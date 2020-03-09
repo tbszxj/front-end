@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 1500px;
+        }
+    </style>
+</head>
+<body>
+    <img id="pic" src="image/tianshi.gif" alt="">
+    
+    <script>
+        //获取页面滚动出去的距离
+        //文档的根元素
+        window.onscroll = function () {
+            console.log(getScroll().scrollTop);
+            console.log(getScroll().scrollLeft);
+        }
+        function getScroll() {
+            return {
+                scrollTop : document.documentElement.scrollTop || document.body.scrollTop,
+                scrollLeft : document.documentElement.scrollLeft || document.body.scrollLeft
+            }
+        }
+        //获取鼠标在页面上的坐标
+        function getPage(e){
+            return {
+                pageX : e.clientX + getScroll().scrollLeft,
+                pageY : e.clientY + getScroll().scrollTop
+            }
+        }
+        //处理pageX和pageY的兼容性问题
+        var img = document.getElementById('pic');
+        document.onmousemove = function(e) {
+            e = e || window.event;
+            img.style.position = 'absolute';
+    
+            img.style.left = getPage(e).pageX + 'px';
+            img.style.top = getPage(e).pageY + 'px';
+        }     
+    </script>
+</body>
+</html>

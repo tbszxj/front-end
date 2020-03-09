@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON数组实例</title>
+</head>
+<body>
+<h2>JavaScript 创建JSON数组实例</h2>
+<p>第一个网站的名称：<span id="name1"></span></p>
+<p>第一个网站修改后的名称：<span id="name2"></span></p>
+
+<script>
+    //对象数组
+    var sites=[
+        {"name":"tbszxj","url":"www.tbszxj.xyz"},
+        {"name":"google","url":"www.google.com"},
+        {"name":"淘宝","url":"www.taobao.com"}
+    ];
+    document.getElementById("name1").innerHTML=sites[0].name;
+    //修改网站名称
+    sites[0].name="zxj";
+    document.getElementById("name2").innerHTML=sites[0].name;
+
+</script>
+
+
+<h1>循环内嵌数组</h1>
+<p id="demo"></p>
+<script>
+
+    var myObj, i, j, x = "";
+    myObj = {
+        "name":"网站",
+        "num":3,
+        "sites": [
+            { "name":"Google", "info":[ "Android", "Google 搜索", "Google 翻译" ] },
+            { "name":"Runoob", "info":[ "菜鸟教程", "菜鸟工具", "菜鸟微信" ] },
+            { "name":"Taobao", "info":[ "淘宝", "网购" ] }
+        ]
+    }
+
+    for (i in myObj.sites) {
+        x += "<h1>" + myObj.sites[i].name + "</h1>";
+        for (j in myObj.sites[i].info) {
+            x += myObj.sites[i].info[j] + "<br>";
+        }
+    }
+
+    document.getElementById("demo").innerHTML = x;
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 5000px;
+        }
+        .father {
+            width: 800px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: #ccc;
+            position: relative;
+        }
+        img {
+            position: fixed; /*固定定位 不论父亲是否有定位定位都只认浏览器*/
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    <img src="../images/xunguang-4.jpg" alt="">
+</div>
+</body>
+</html>

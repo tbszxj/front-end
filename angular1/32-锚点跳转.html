@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>location服务</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+
+    <style>
+        #parent div {
+            width: 300px;
+            height: 500px;
+            border: 1px red solid;
+            margin: 20px;
+        }
+        #parent ul {
+            width: 200px;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+    </style>
+
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-controller="ctrl">
+    <div id="parent">
+        <ul>
+            <li ng-repeat="id in [1,2,3,4,5]" ng-click="change('div'+id)">{{id}}</li>
+        </ul>
+        <div ng-repeat="id in [1,2,3,4,5]" ng-attr-id="div{{id}}">{{id}}</div>
+    </div>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope','$location','$anchorScroll',function ($scope,$location,$anchorScroll) {
+        //锚点跳转，跳到页面指定位置
+        $scope.change = function (id) {
+            $location.hash(id);
+            $anchorScroll();
+        }
+    }]);
+
+</script>
+</body>
+</html>
+
+

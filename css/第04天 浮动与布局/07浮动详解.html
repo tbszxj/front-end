@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div:first-child {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            float: left;/*left 为默认值*/
+            /*浮动体现在漂浮的概念，漂浮在标准流的上面*/
+        }
+        div:last-child {
+            height: 300px;
+            width: 140px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<!--如果两个盒子都不加浮动，就是标准流，块级元素自上而下显示-->
+</body>
+</html>

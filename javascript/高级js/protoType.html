@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //使用protoType属性解决对象中函数的问题
+        function Person(name,age,sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        //原型对象 -->对象 原型对象有一个属性constructor
+        //console.dir(Person.protoType);
+        
+        //可以通过构造函数的原型对象，给对象增加成员
+        Person.prototype.sayHi = function () {
+            console.log('大家好，我是'+this.name);
+        }
+        var p1 = new Person('zs',18,'男');
+        var p2 = new Person('ls',19,'男');
+        //所有对象可以共享构造函数的原型对象中的成员
+        p1.sayHi();
+        p2.sayHi();
+        console.log(p1.sayHi === p2.sayHi);
+
+        //原型中可以增加成员
+        Person.prototype.type = 'human';
+
+        p1.type = "p1 human";
+        console.log(p1.type);
+        console.log(p2.type);
+        //为什么p1能够访问构造函数原型对象中的成员
+        console.dir(p1);
+        console.dir(p2);
+
+    </script>
+    
+</body>
+</html>

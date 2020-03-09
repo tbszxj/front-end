@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="动画" id="btn">
+    <div id="box"></div>
+    <script>
+        var btn = document.getElementById('btn');
+        //只生成一个div执行动画的定时器
+        var timerId = null;
+        btn.onclick = function() {
+            var box = document.getElementById('box');
+            //判断之前是否创建了定时器
+            if(timerId) {
+                clearInterval(timerId);
+            }
+            timerId = setInterval(function(){
+                //当前坐标
+                var current = box.offsetLeft;
+                //目标位置
+                var target = 500;
+                //步进,上述三步避免硬编码
+                var step = 5;
+                if(current >= target) {
+                    box.style.left = target +'px';
+                    clearInterval(timerId);
+                    return;
+                }
+                current += step;
+                box.style.left = current+'px';
+            },20)
+        }
+    </script>
+    
+</body>
+</html>

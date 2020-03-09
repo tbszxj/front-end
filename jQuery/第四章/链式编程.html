@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+
+</div>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //链式编程
+        //如果调用一个方法这个方法有返回值并且是一个jquary对象就可以继续调用jquary方法
+        $('div').width(100).height(100).css('backgroundColor','red');
+
+        //end方法返回上一个状态
+        //$('div').width(100).width().end();//会出错，因为width返回的是数值不是jquary对象
+    })
+</script>
+</body>
+</html>

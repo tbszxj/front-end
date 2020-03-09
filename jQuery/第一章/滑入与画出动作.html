@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="滑入" id="slideDown">
+<input type="button" value="滑出" id="slideUp">
+<input type="button" value="切换" id="slideToggle"><br><br>
+<div id="div1"></div>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //1.滑入
+        $('#slideDown').click(function () {
+            //让id为div1的元素滑入
+            //不加参数也有动画效果
+            //参数1动画执行的时常
+            //动画执行完毕的回调函数
+            $('#div1').slideDown(2000,function () {
+                alert('滑入完成');
+            });
+        });
+        //2.滑出
+        $('#slideUp').click(function () {
+            $('#div1').slideUp(1000,function () {
+                alert('滑出完成');
+            });
+        });
+        //3.切换 显示了就隐藏没显示就显示
+        $('#slideToggle').click(function () {
+            $('#div1').slideToggle(1000,function () {
+                alert('切换完成');
+            });
+        });
+    })
+
+</script>
+</body>
+</html>

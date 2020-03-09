@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn" value="按钮">
+
+    <script>
+        //注册/移除事件的三种方式
+        //1.通过onclick方式----此种方式不能为一个事件注册多个事件处理函数
+        /*var btn = document.getElementById('btn');
+        btn.onclick  = function () {
+            alert('user1');
+        }
+        var btn = document.getElementById('btn');
+        btn.onclick  = function () {
+            alert('user2');
+        }*/
+        //2.W3C标准注册事件方法
+        var btn = document.getElementById('btn');
+        //添加事件监听,参数（'事件名','事件处理函数'，false）
+        //好处：可以给一个事件源注册多个事件处理函数
+        //坏处：有兼容性问题
+        btn.addEventListener('click',function(){
+            alert('abc');
+        },false);
+        btn.addEventListener('click',function(){
+            alert('123');
+        },false);
+        //处理兼容性问题使用attachEvent(),chrome不支持该方法
+        /*btn.attachEvent('onclick',function(){
+            alert('456');
+        })*/
+        function myAddEventListener(element,eventName,callback){
+            if(element.addEventListener){
+                element.addEventListener(eventName,callback,false);
+            }else if(element.attachEvent){
+                element.attachEvent('on'+eventName,callback);
+            }else{
+                element['on'+eventName] = callback;
+            }
+        }
+        myAddEventListener(btn,'click',function(){
+            alert('456');
+        })
+
+    </script>
+    
+</body>
+</html>

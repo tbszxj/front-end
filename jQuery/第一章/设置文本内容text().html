@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="获取" id="getBtn">
+<input type="button" value="设置" id="setBtn">
+
+<div id="div1">我是一个div
+    <p>我是一个p标签</p>
+</div>
+
+<div>
+    我是div2
+    <p>我是p2</p>
+</div>
+
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        $('#getBtn').click(function () {
+            //console.log($('#div1').text());//不给参数就是获取，会获取到这个标签中的所有内容，包括子标签
+
+            console.log($('div').text());
+        });
+
+        //设置文本
+        $('#setBtn').click(function () {
+            //给id为div1的div设置
+            //$('#div1').text('我是新设置的文本<a>我是连接</a>');//相当于innerText
+
+            $('div').text('我是新设置的文本');//隐式迭代，设置所有
+        })
+
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+.mask {
+    width: 175px;
+    height: 175px;
+    background: rgba(255, 255, 0, 0.4);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    cursor: move;
+    display: none;
+}
+.small {
+    width: 350px;
+    height: 270px;
+}
+.big {
+    width: 400px;
+    height: 308px;
+    margin-left: 400px;
+    display: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+

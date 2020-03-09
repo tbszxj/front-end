@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒模型</title>
+    <style>
+        div:first-child { /*盒子的大小为width+padding+border*/
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            box-sizing: content-box; /*以前的盒子模型 W3C推荐的*/
+            padding: 20px; /*padding会撑开盒子*/
+            border: 15px solid red; /*border会撑开盒子*/
+        }
+        div:last-child { /*盒子的大小为width 即 padding和border包含在width里面*/
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            padding: 20px;
+            box-sizing: border-box; /*padding 不撑开盒子*/
+            border: 15px solid red; /*border也不会撑开盒子*/
+        }
+    </style>
+</head>
+<body>
+<div>
+    content-box
+</div>
+<div class="last">
+    border-box
+</div>
+</body>
+</html>

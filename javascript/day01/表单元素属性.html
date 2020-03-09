@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>innerText和innerHTML的区别</title>           
+    </head>
+    <body> 
+        <input type="text"><br>
+        <input type="text"><br>
+        <input type="text"><br>
+        <input type="text"><br>
+        <input type="text"><br>
+        <input type="text"><br>
+        <input type="text"><br>
+        <input type="button" value="按钮" id="btn"><br>
+        <script>
+           //设置文本框中的内容
+           var inputs = document.getElementsByTagName('input');
+           for (var i=0;i<inputs.length;i++) {
+               //判断当前input类型
+               if (inputs[i].type === 'text') {
+                   inputs[i].value = i+1;
+               }
+           }
+           //点击按钮获取文本框的内容，并用于分割形成一个新的字符串
+           var btn = document.getElementById('btn');
+           btn.onclick = function () {
+               //获取内容
+               var str = "";
+               for (var i=0;i<inputs.length;i++) {
+                    if (inputs[i].type === 'text') {
+                        str += inputs[i].value+'|';
+                    }                  
+               }
+               str = str.substr(0,str.length-1);
+               console.log(str);
+           }
+
+        </script>
+    </body>   
+</html>

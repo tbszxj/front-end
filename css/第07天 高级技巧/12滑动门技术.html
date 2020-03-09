@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            display: inline-block;
+            height: 33px;
+            /*不能给宽度 给宽度就写死了*/
+            background: url("../images/weixin.png") no-repeat;
+            padding-left: 15px;
+            margin: 100px;
+        }
+        a span {
+            height: 33px;
+            display: inline-block;
+            background: url("../images/weixin.png") no-repeat right; /*span不能给宽度 利用padding挤开 所以背景位置右对齐*/
+            padding-right: 15px;
+            color: white;
+            text-align: center;
+            line-height: 33px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<a href="">
+    <span>首页</span>
+</a>
+<a href="">
+    <span>公司简介</span>
+</a>
+<a href="">
+    <span>联系人</span>
+</a>
+</body>
+</html>

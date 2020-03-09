@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式相关指令</title>
+    <style>
+        .red {
+            background-color: red;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="ctrl">
+   <div ng-class="{red:true,yellow:true}">{{text}}</div>
+    <div ng-style="{color:'red'}">123</div>
+    <a ng-href="{{url}}">百度</a>
+    <!--由于不能为每一个属性对应一个ng指令，可以使用一种通用写法-->
+    <a ng-attr-href="{{url}}" ng-attr-title="{{text}}">百度</a>
+</div>
+<script>
+    //过滤器是可以组合使用的
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope',function($scope){
+        $scope.text = "sdasaqw";
+
+        $scope.url = "http://www.baidu.com";
+
+    }]);
+</script>
+</body>
+</html>

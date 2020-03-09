@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+<!--  可以通过绑定对象的方式，传入类名：布尔值的方式控制class的类-->
+<!--  <h2 :class="active">{{message}}</h2>-->
+<!--  <h2 :class="{类名1:true, 类名2:false}"></h2>-->
+<!--  对于必须要有的类可以固定写在class中，动态的类可以通过绑定的方式加入到class中，如下-->
+  <h2 class="title" :class="{active:isActive,line:isLine}">{{message}}</h2>
+<!--  也可以通过调用方法的方式实现对象语法-->
+  <h2 class="title" :class="getClasses()">{{message}}</h2>
+  <button @click="btnClick">按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'hello world!',
+      isActive: true,
+      isLine: false
+    },
+    methods:{
+      btnClick:function () {
+        this.isActive = !this.isActive;
+      },
+      getClasses: function () {
+        return {active: this.isActive,line: this.isLine}
+      }
+    }
+  })
+</script>
+</body>
+</html>

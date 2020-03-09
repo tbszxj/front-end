@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+        .two {
+            border:1px solid green;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"><br>
+<div class="one" id="one"></div>
+<span>委托测试</span>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //1.on简单注册事件,不支持动态注册
+        /*$('div').on('click',function () {
+            console.log('鼠标点击');
+        })*/
+
+        //2.on委托注册 支持动态注册
+        $('body').on('click','div,span',function () {
+            console.log('委托注册事件');
+        })
+    })
+</script>
+</body>
+</html>

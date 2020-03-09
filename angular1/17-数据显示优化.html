@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input相关指令</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.7.8/angular-sanitize.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="ctrl">
+    <!--使用表达式解析数据在网络延迟的时候可能会直接显示表达式用户体验不好-->
+    <!--ng-bind绑定数据而不是使用表达式，缺点仅支持一个表达式-->
+    <div ng-bind="text"></div>
+    <!--解决上述缺点的方式,使用模板，可以写多个表达式-->
+    <div ng-bind-template="{{text}},{{text}}"></div>
+    <!--将字符串解析为html-->
+    <div ng-bind-html="text"></div>
+    <!--如果想使用表达式同时未解析时不显示-->
+    <div ng-cloak>{{text}}</div>
+    <!--不解析大括号中的表达式-->
+    <div ng-non-bindable>{{text}}</div>
+</div>
+<script>
+    //过滤器是可以组合使用的
+    var app = angular.module("myApp",['ngSanitize']);
+
+    app.controller('ctrl',['$scope','$interval',function($scope,$interval){
+        var iNow = 5;
+        $scope.text = '<h1>'+iNow + '秒</h1>';
+
+        var timer = $interval(function () {
+            iNow --;
+            $scope.text = '<h1>'+iNow + '秒</h1>';
+            if(iNow == 0){//清除定时器
+                $interval.cancel(timer);
+            }
+        },1000)
+
+    }]);
+</script>
+</body>
+</html>

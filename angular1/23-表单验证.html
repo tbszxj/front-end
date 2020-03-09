@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+    <style>
+        /*angularJs提供css的方式设置验证结果的样式*/
+        input.ng-valid {
+            border: 1px green solid;
+            background-color: green;
+        }
+        input.ng-invalid {
+            border: 1px red solid;
+            background-color: red;
+        }
+        input.ng-pristine {
+            border: 1px green solid;
+            background-color: green;
+        }
+        input.ng-dirty {
+            border: 1px red solid;
+            background-color: red;
+        }
+    </style>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-app="myApp" ng-controller="ctrl">
+    <!--表单相关-->
+    <!--不进行校验novalidate-->
+    <form name="myForm">
+        <input type="email" name="myText" ng-model="text">
+        <!--有效的$valid-->
+        <div>{{myForm.myText.$valid}}</div>
+        <!--无效的$invalid-->
+        <div>{{myForm.myText.$invalid}}</div>
+        <!--原始值$pristine-->
+        <div>{{myForm.myText.$pristine}}</div>
+        <!--脏值$dirty-->
+        <div>{{myForm.myText.$dirty}}</div>
+        <!--错误$error-->
+        <div>{{myForm.myText.$error}}</div>
+    </form>
+
+    <form name="myForm2">
+        <!--必填required 最小长度ng-minlength 正则匹配ng-pattern-->
+        <input type="text" name="myText" ng-model="text" required ng-minlength="5" ng-pattern="/^[a-zA-Z]+$/">
+        <!--有效的$valid-->
+        <div>{{myForm2.myText.$valid}}</div>
+        <!--无效的$invalid-->
+        <div>{{myForm2.myText.$invalid}}</div>
+        <!--原始值$pristine-->
+        <div>{{myForm2.myText.$pristine}}</div>
+        <!--脏值$dirty-->
+        <div>{{myForm2.myText.$dirty}}</div>
+        <!--错误$error-->
+        <div>{{myForm2.myText.$error}}</div>
+    </form>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope',function ($scope) {
+        $scope.text = 'hello';
+
+    }]);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        select {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <select id="all" multiple="multiple">
+        <option>增加</option>
+        <option>修改</option>
+        <option>删除</option>
+        <option>查找</option>
+    </select>
+    <input type="button" value=">>" id="btn1">
+    <input type="button" value="<<" id="btn2">
+    <input type="button" value=">" id="btn3">
+    <input type="button" value="<" id="btn4">
+
+    <select id="select" multiple="multiple">
+
+    </select>
+    <script>
+        //权限选择
+        var all = document.getElementById('all');
+        var select = document.getElementById('select');
+
+        //1.全选
+        var btn1 = document.getElementById('btn1');
+        btn1.onclick = function () {
+            var i=0,len = all.children.length;
+            for (;i < len;i++){
+                var li = all.children[0];
+                select.appendChild(li);
+            }
+        }
+        //2.全不选
+        var btn2 = document.getElementById('btn2');
+        btn2.onclick = function () {
+            var i=0,len = select.children.length;
+            for (;i < len;i++){
+                var li = select.children[0];
+                all.appendChild(li);
+            }
+        }
+        //3.选择选中的项
+        var btn3 = document.getElementById('btn3');
+        btn3.onclick = function () {
+            var i=0,len = all.children.length;
+            for (;i < len;i++){
+                var li = all.children[i];
+                if(li.selected) {
+                    select.appendChild(li);
+                    i--;
+                }
+            }
+        }
+        //4.移除选中的项
+        var btn4 = document.getElementById('btn4');
+        btn4.onclick = function () {
+            var i=0,len = select.children.length;
+            for (;i < len;i++){
+                var li = select.children[i];
+                if(li.selected) {
+                    all.appendChild(li);
+                    i--;
+                }
+            }
+        }
+
+    </script>
+
+    
+</body>
+</html>

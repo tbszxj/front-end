@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="ctrl">
+    <ul>
+        <!--获取元素的索引号 $index-->
+        <li ng-repeat="data in list">{{$index}}</li>
+        <!--还可以获取首项%first 尾项%last 中间项$middle 奇数%even 偶数%odd -->
+    </ul>
+
+    <!--兄弟之间的循环操作使用ng-repeat-start和ng-repeat-end-->
+    <div ng-repeat-start="data in list">{{data}}</div>
+    <p>{{data}}</p>
+    <div ng-repeat-end>{{data}}</div>
+
+</div>
+<script>
+    //过滤器是可以组合使用的
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope','$filter',function($scope,$filter){
+        $scope.list = [
+            'aaa','bbb','ccc'
+        ];
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON对象实例</title>
+</head>
+<body>
+<h2>JavaScript创建JSON实例</h2>
+<p>
+    网站名称：<span id="jname"></span><br />
+    网站地址：<span id="jurl"></span><br />
+    网站slogan:<span id="jslogan"></span><br />
+</p>
+<!-- JSON数据书写格式为 名称：值对    其对象在大括号中书写-->
+<script>
+    var JSONObject={
+        "name":"zxj个人网站",
+        "url":"www.tbszxj.xyz",
+        "slogan":"学的不仅仅是技术，更是梦想"
+    };
+    document.getElementById("jname").innerHTML=JSONObject.name
+    document.getElementById("jurl").innerHTML=JSONObject.url
+    document.getElementById("jslogan").innerHTML=JSONObject.slogan
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scope学习</title>
+    <script src="lib/angular/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope, $rootScope) {
+            //$scope是局部作用域，里面的域对象只能用在对应的controller中
+            $scope.name = "Volvo";
+            //$rootScope是根作用域，里面的域对象可以用在所有的controller中
+            //可以用于控制器间的通信
+            $rootScope.commonElement = "common"
+        });
+        app.controller('myCtrl2',function($scope) {
+            $scope.name = "张三";
+            $scope.age = "22";
+        })
+    </script>
+</head>
+
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+    <p>{{name}}</p>
+    <p>{{commonElement}}</p>
+</div>
+<div ng-controller="myCtrl2">
+    <p>{{name}}</p>
+    <p>{{age}}</p>
+    <p>{{commonElement}}</p>
+</div>
+</body>
+</html>

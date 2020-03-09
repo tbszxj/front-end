@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        div:first-child { /*两者外边距会合并，会以较大的为外边距替换，不会叠加*/
+            margin-bottom: 100px;
+        }
+        div:last-child {
+            margin-top: 50px;
+        }
+
+        /*嵌套盒子的外边距*/
+        .father {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin-top: 100px;
+            /*border: 1px solid red;*/
+            /*padding: 1px;*/
+            overflow: hidden;
+        }
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            margin-top: 30px; /*整个大盒子会掉下去，外边距塌陷*//*解决办法给父亲加边框border 或者给父亲一个padding 或者给父亲设置overflow:hidden*/
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+
+<div class="father">
+    <div class="son"></div>
+</div>
+</body>
+</html>

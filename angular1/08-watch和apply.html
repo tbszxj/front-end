@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="firstController" ng-click="show()">
+    {{name}}
+    {{age}}
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller('firstController',function($scope,$timeout){
+        setTimeout(function(){
+            $scope.$apply(function(){
+                $scope.name="李四";
+            })
+        },2000);
+        $scope.name="张三";
+        $scope.age='10';
+        $scope.show=function(){
+            $scope.name='点击后的name';
+        }
+        $timeout(function(){
+            $scope.age='50';
+        },2000);
+
+
+        //$watch监听数值的变化
+        $scope.$watch('name',function (newVal,oldVal) {
+            console.log("newVal:"+newVal+"oldVal:"+oldVal)
+        })
+    })
+    //在上面代码中如果我们不使用$apply来传播name值的改变，而是直接将$scope.name="李四"这句代码写在setTimeout函数中，界面上显示的值根本就不会改变
+    //经测试高版本好像会改变
+</script>
+</body>
+</html>

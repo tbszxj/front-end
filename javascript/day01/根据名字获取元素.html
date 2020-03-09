@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>根据name获取元素</title>       
+    </head>
+    <body>
+        <form id="frm" action="">
+            <input type="text" name="name"><br>
+            <input type="text" name="pwd"><br>
+
+            <input type="radio" name="sex"><br>
+            <input type="radio" name="sex"><br>
+            <input type="submit" name="login"><br>
+
+        </form>
+        <input type="text" name="test"><br>
+        <script>
+            //根据name获取元素
+            var frm = document.getElementById('frm');
+            
+            //节点的集合
+            var radios = document.getElementsByName('sex');
+            console.log(radios);
+
+            //使用选择器查找,
+            frm = document.querySelector('#frm');//使用id选择器
+            var texts = frm.querySelectorAll('input[type=text]');
+            console.log(texts);
+        </script>
+    </body>   
+</html>

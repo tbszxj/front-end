@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>根据name获取元素</title>   
+        
+    </head>
+    <body> 
+        <!--显示小图-->
+        <div id="imagegallery">
+            <a href="image/a.jpg" title="图片a">
+                <img src="image/a.jpg" alt="a.jpg" width="192px" height="108">
+            </a>
+            <a href="image/b.jpg" title="图片b">
+                <img src="image/b.jpg" alt="a.jpg" width="192px" height="108">
+            </a>
+            <a href="image/c.jpg" title="图片c">
+                <img src="image/c.jpg" alt="a.jpg" width="192px" height="108">
+            </a>
+            <a href="image/d.jpg" title="图片d">
+                <img src="image/d.jpg" alt="a.jpg" width="192px" height="108">
+            </a>
+        </div> 
+        <!--分割线-->
+        <div style="clear:both"></div>
+        <!--显示大图-->
+        <img id="image" src="image/a.jpg" alt="" width="784px" height="432px" />
+        <!--图片描述-->
+        <p id="des">选择一个图片</p>  
+        <script>
+            //1.获取所有的a标签
+            var imagegallery = document.getElementById('imagegallery');
+            var links = imagegallery.getElementsByTagName('a');
+            //2.给所有的a元素注册点击事件
+            for(var i=0;i<links.length;i++){
+                links[i].onclick = function() {
+                    //切换图片和文字
+                    var img = document.getElementById('image');
+                    var des = document.getElementById('des');
+                    //设置图片
+                    img.src = this.href;
+                    //设置文本
+                    des.innerText = this.title;
+                    //取消默认行为的跳转
+                    return false;
+                }
+            }
+
+
+           
+        </script>
+    </body>   
+</html>

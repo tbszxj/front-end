@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            border: 0;/*设置没有边框*/
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            border-width: 3px; /*边框宽度*/
+            border-color: red; /*边框颜色*/
+            border-style: solid; /*实线边框 dashed虚线边框 dotted点线 double双实线 none没有边框*/
+        }
+        .user {
+            border-width: 1px;
+            border-color: green;
+            border-style: solid;
+        }
+        .nc {/*上下边框*/
+            border-top-width: 1px;
+            border-top-color: blue;
+            border-top-style: dashed;
+            border-bottom-width: 1px;
+            border-bottom-color: red;
+            border-bottom-style: dotted;
+        }
+        .email { /*简写形式*/
+            border-top: 1px solid black;
+            border-bottom: 1px double red;
+        }
+        .tel {
+            border:1px solid skyblue;
+        }
+    </style>
+</head>
+<body>
+<div>盒子</div>
+
+用户名：<input type="text" class="user"><br/>
+昵  称：<input type="text" class="nc"><br/>
+邮  箱：<input type="email" class="email"><br/>
+手  机：<input type="tel" class="tel"><br/>
+<img src="../images/盒子边框.JPG" alt="">
+</body>
+</html>

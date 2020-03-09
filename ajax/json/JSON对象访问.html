@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON访问对象的几种方式</title>
+</head>
+<body>
+<h1>JSON访问对象的几种方式</h1>
+<p>使用点号(.)来访问JSON对象的name的值：<span id="demo0"></span></p>
+<p>使用中括号（[]）来访问JSON对象xlexa的值: <span id="demo1"></span></p>
+<p>使用for-in循环遍历对象的属性:</p>
+<p id="demo2"></p>
+
+
+<script>
+    var myObj,x;
+    myObj={"name":"tbszxj","xlexa":10000,"site":"www.tbszxj.xyz"};
+    //1使用点号（.）访问对象name值
+    x=myObj.name;
+    document.getElementById("demo0").innerHTML=x;
+
+    //使用中括号（[]）访问对象的xlexa值
+    x=myObj["xlexa"];
+    document.getElementById("demo1").innerHTML=x;
+    //使用循环进行遍历属性名及对应值，在循环中值只能通过中括号[]访问
+    for (x in myObj)
+    {
+        document.getElementById("demo2").innerHTML+=x+" : "+myObj[x]+"<br/>";
+    }
+
+
+
+</script>
+
+
+</body>
+</html>

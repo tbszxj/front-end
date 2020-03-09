@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .father {
+            width: 800px;
+            height: 400px;
+            background-color: pink;
+            margin: 40px auto;
+            position: relative; /*父亲要相对定位，否则子元素的定位起始点是浏览器*/
+        }
+        .son {
+            width: 100px;
+            height: 40px;
+            background-color: purple;
+            position: absolute;
+            /*margin: 0 auto;*/ /*加了绝对定位的盒子，左右margin无效*/
+            left: 50%; /*到父盒子的一半*/
+            margin-left: -50px; /*再向左走自己宽度的一半*/
+            top: 50%; /*向下走父盒子高度的一般*/
+            margin-top: -20px; /*相上走自己高度的一半*/
+        }
+    </style>
+</head>
+<body>
+<div class="father">
+    <div class="son"></div>
+</div>
+</body>
+</html>

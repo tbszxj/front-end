@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #ul li {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<ul id="ul">
+    <li><a href="../images/1.JPG" title="pic1">
+        <img src="../images/1.JPG" width="100" alt="pic1">
+    </a></li>
+    <li><a href="../images/2.JPG" title="pic2">
+        <img src="../images/2.JPG" width="100" alt="pic2">
+    </a></li>
+    <li><a href="../images/3.JPG" title="pic3">
+        <img src="../images/3.JPG" width="100" alt="pic3">
+    </a></li>
+    <li><a href="../images/4.JPG" title="pic4">
+        <img src="../images/4.JPG" width="100" alt="pic4">
+    </a></li>
+</ul>
+<div style="clear: both"></div>
+<img id="image" src="" alt="" width="450px">
+<p id="des">选择一个图片</p>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //给a标签设置点击事件
+        $('#ul>li>a').click(function () {
+            var srcVal = $(this).attr('href');
+            $('#image').attr('src',srcVal);
+            $('#des').text($(this).attr('title'));
+
+            //阻止默认事件
+            return false;
+        })
+    })
+</script>
+</body>
+</html>

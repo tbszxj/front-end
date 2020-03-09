@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>1111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>555</li>
+        <li>666</li>
+    </ul>
+    <script>
+        var ul = document.getElementById('ul');
+        var li = document.createElement('li');
+        li.innerText = '测试';
+        //把动态创建的元素插入到指定的位置之间
+        ul.insertBefore(li,ul.children[2]);
+        //替换元素
+        var div = document.createElement('div');
+        div.innerText = 'div';
+        ul.replaceChild(div,ul.children[3]);
+        //删除所有ul下的元素
+        //第一种 使用innerHTML清空时不会清空事件，会造成内存泄漏
+        //ul.innerHTML = '';
+        for(var i=0,len = ul.children.length;i<len;i++){
+            var li = ul.children[0];
+            ul.removeChild(li);
+        }
+
+
+    </script>
+</body>
+</html>

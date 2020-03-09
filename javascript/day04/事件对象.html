@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" id="btn" value="按钮">
+    <div id="box">
+
+    </div>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function (e) {
+            console.dir(e);
+            //获取事件的名称e.type
+            console.log(e.type);
+        }
+        //e.type的作用
+        var box = document.getElementById('box');
+        box.onclick = fn ;
+        box.onmouseover = fn;
+        box.onmouseout = fn;
+
+        function fn (e) {
+            //事件对象有有兼容性问题，IE9以前不支持
+            //IE9之前获取对象的方式window.event
+            //处理兼容性问题
+            e = e || window.event;
+            
+            switch (e.type) {
+                case 'click':
+                    console.log('点击事件');
+                    break;
+                case 'mouseover':
+                    console.log('鼠标经过');
+                    break;
+                case 'mouseout':
+                    console.log('鼠标离开');
+                    break;
+            }
+        }
+    </script>
+    
+</body>
+</html>

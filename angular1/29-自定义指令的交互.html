@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽指令</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-app="myApp" ng-controller="ctrl">
+    <hello>
+        <!--如何不做处理hi会丢失-->
+        <hi></hi>
+    </hello>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    //定义自定义指令
+
+    app.directive('hello',function () {
+        return {
+            restrict : 'E',
+            replace : true,
+            transclude :true, //防止内部自定义标签丢失
+            controller : function($scope){
+                this.name = 'zxj';
+            },
+            template : '<div>hello angular<h1 ng-transclude></h1></div>'
+
+        }
+    });
+
+    app.directive('hi',function () {
+        return {
+            restrict : 'E',
+            replace : true,
+            require : '?^hello',//需要从那个指令引入域对象,^表示父级查找，?号找不到也不报错
+            template : '<div>hi angular</div>',
+            link : function (scope,element,attr,reController) {
+                console.log(reController.name);
+            }
+
+        }
+    });
+    //指令是可以复用的所以作用域的问题要进行控制,默认是共享作用域的
+    app.controller('ctrl',['$scope',function ($scope) {
+
+    }]);
+
+</script>
+</body>
+</html>

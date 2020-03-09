@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="获取" id="getBtn">
+<input type="button" value="设置" id="setBtn">
+
+<div id="father">
+    <div>
+        <span>span1</span>
+        <span>span2</span>
+        <span>span3</span>
+    </div>
+    <div>
+        <b>1</b>
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+    </div>
+    <div>
+        <p></p>
+        <p></p>
+    </div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <span></span>
+</div>
+
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //1.获取id为father元素的所有子div
+        console.log($('#father>div'));
+        //获取id为father的所有子dic和所有子p
+        //console.log($('#father > div ,p'));//这种写法不行，会获取页面中所有p
+        console.log($('#father > div ,#father > p'));//正确写法
+        //获取id为father的div所有后代div
+        console.log($('#father div'));
+
+    });
+</script>
+</body>
+</html>

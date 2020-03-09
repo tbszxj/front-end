@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .warp li {
+            list-style: none;
+        }
+        .menuGroup > div {
+            height: 200px;
+            background-color: #fff;
+            display: none;
+            width: 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="warp">
+    <ul>
+        <li class="menuGroup">
+            <span class="groupTitle">标题1</span>
+            <div>我是弹出的div1</div>
+        </li>
+        <li class="menuGroup">
+            <span class="groupTitle">标题2</span>
+            <div>我是弹出的div2</div>
+        </li>
+        <li class="menuGroup">
+            <span class="groupTitle">标题3</span>
+            <div>我是弹出的div3</div>
+        </li>
+        <li class="menuGroup">
+            <span class="groupTitle">标题4</span>
+            <div>我是弹出的div4</div>
+        </li>
+        <li class="menuGroup">
+            <span class="groupTitle">标题5</span>
+            <div>我是弹出的div5</div>
+        </li>
+    </ul>
+</div>
+
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        $('.warp li').click(function () {
+            $(this).children('div').show();
+            $(this).siblings('li').children('div').hide();
+        })
+    })
+
+</script>
+</body>
+</html>

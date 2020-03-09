@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浏览器对象模型BOM</title>
+</head>
+<body>
+    
+    <script>
+        //定义的变量和函数是在window下
+        //使用window下的成员 window可以省略
+        var abc = '123';
+        function fn() {
+            console.log('fn');
+        }
+        console.log(window.abc);
+        window.fn();
+
+        //常用BOM方法,对话框
+        // alert();
+        // prompt();
+        // confirm();
+
+        console.dir(window);
+
+        //window下有特殊的属性name top（top是只读属性）
+        console.log(typeof name);
+        console.log(typeof top);
+        
+    </script>
+</body>
+</html>

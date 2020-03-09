@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .king { /*类选择器权重 0,0,1,0*/
+            color: green;
+        }
+        div { /*标签选择器权重 0，0，0，1*/
+            color: pink;
+        }
+        #wang { /*id选择器权重 0,1,0,0*/
+            color: red;
+        }
+        /*行内样式 1,0,0,0*/
+        /*最大的*/
+        div {
+            color: orange!important; /*important是重要的，级别最高，一旦出现优先执行*/
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="king" id="wang">王者荣耀</div>
+<img src="../images/css优先级.JPG" alt="">
+<img src="../images/权重计算公式.JPG" alt="">
+</body>
+</html>

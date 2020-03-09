@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .warp ul {
+            display: inline-block;
+            margin-top: 300px;
+            margin-left: 300px;
+        }
+        #left li{
+            list-style: none;
+            height: 133px;
+            width: 100px;
+            border: 1px solid black;
+            background-color: aquamarine;
+        }
+        #right li{
+            list-style: none;
+            height: 133px;
+            width: 100px;
+            border: 1px solid black;
+            background-color: aquamarine;
+        }
+        #center ul{
+            width: 300px;
+            height: 400px;
+        }
+        #center li {
+            list-style: none;
+        }
+        #center li {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="warp">
+    <ul id="left">
+        <li>
+            <a href="#">小孩</a>
+        </li>
+        <li>
+            <a href="#">圣诞老人</a>
+        </li>
+        <li>
+            <a href="#">雪人</a>
+        </li>
+    </ul>
+    <ul id="center">
+        <li>
+            <a href="#"><img src="../images/1.JPG" width="300px" height="400px"></a>
+        </li>
+        <li>
+            <a href="#"><img src="../images/2.JPG" width="300px" height="400px"></a>
+        </li>
+        <li>
+            <a href="#"><img src="../images/3.JPG" width="300px" height="400px"></a>
+        </li>
+        <li>
+            <a href="#"><img src="../images/4.JPG" width="300px" height="400px"></a>
+        </li>
+        <li>
+            <a href="#"><img src="../images/5.JPG" width="300px" height="400px"></a>
+        </li>
+        <li>
+            <a href="#"><img src="../images/6.JPG" width="300px" height="400px"></a>
+        </li>
+    </ul>
+    <ul id=right>
+        <li>
+            <a href="#">小鹿</a>
+        </li>
+        <li>
+            <a href="#">小帽子</a>
+        </li>
+        <li>
+            <a href="#">小辫子</a>
+        </li>
+    </ul>
+
+</div>
+
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        $('#left>li').mouseenter(function () {
+            //index函数自己在兄弟中的排行
+            var idx = $(this).index();
+            $('#center>li:eq('+idx+')').show().siblings('li').hide();
+        });
+        $('#right>li').mouseenter(function () {
+            //index函数自己在兄弟中的排行
+            var idx = $(this).index();
+            idx += 3;
+            $('#center>li:eq('+idx+')').show().siblings('li').hide();
+        });
+    })
+
+</script>
+</body>
+</html>

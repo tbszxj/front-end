@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https:www.baidu.com">baidu</a>
+    <button id="btn1">前进</button>
+
+    <script>
+        //history对象一般用于前进后退
+        var btn1 = document.getElementById('btn1');
+        btn1.onclick = function () {
+            history.forward();
+            //后退
+            //history.back();
+            //history.go(1);//下一个页面
+            //history.go(-1);//前一个页面
+        }
+    </script>
+</body>
+</html>

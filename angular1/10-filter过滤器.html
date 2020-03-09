@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="ctrl">
+    <!--货币过滤器,传参指定货币符号-->
+    {{money | currency:'￥'}}<br>
+    <!--数字过滤器，传参指定小数点位数-->
+    {{money | number:'2'}}<br>
+    <!--小写转换为大写-->
+    {{name | uppercase }}<br>
+    <!--json转换-->
+    {{person | json}}<br>
+    <!--字符串截取-->
+    {{str | limitTo:5}}<br>
+    <!--日期格式化过滤器-->
+    {{date | date}}<br>
+    <!--排序-->
+    {{order | orderBy:'age'}}<br>
+    <!--过滤 根据值来进行过滤-->
+    {{order | filter : 22}}
+</div>
+<script>
+    //过滤器的使用是在表达式的后边使用 | 管道符号+过滤器名称来使用指定过滤器
+    //其作用是将表达式的值经过处理转换成特定的格式
+    //过滤器可以传参，使用冒号+参数 如果有多个参数就多个冒号
+    var app = angular.module("myApp",[]);
+    app.controller('ctrl',function($scope){
+        $scope.money = '753136.12554';
+        $scope.name = 'Zhang San';
+
+        $scope.person = {
+            'name':'zxj',
+            'age':'22'
+        };
+
+        $scope.str = "hello world";
+
+        $scope.date = "45623";
+
+        $scope.order = [
+            {name:'zxj',age:22},
+            {name:'zxj2',age:26},
+            {name:'zxj3',age:23},
+            {name:'zxj4',age:28}
+        ]
+    })
+
+</script>
+</body>
+</html>

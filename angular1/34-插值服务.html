@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>缓存服务</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+</head>
+<body>
+<!--表单验证信息需要根据名字进行查找，且完成了双向绑定-->
+<div ng-controller="ctrl">
+    <input type="text" ng-model="name">
+    <textarea ng-model="body" id="" cols="30" rows="10"></textarea>
+    <p>{{showText}}</p>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+
+    app.controller('ctrl',['$scope','$interpolate',function ($scope,$interpolate) {
+        $scope.$watch('body',function (newVal) {
+            if(newVal) {
+                var temp = $interpolate(newVal);
+                $scope.showText = temp({name : $scope.name});
+            }
+        })
+       
+    }]);
+
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="ul">
+    <li>我是第1个标签</li>
+    <li>我是第2个标签</li>
+    <li id="ul3">我是第3个标签</li>
+    <li>我是第4个标签</li>
+    <li>我是第5个标签</li>
+    <li>我是第6个标签</li>
+    <li>我是第7个标签</li>
+</ul>
+<input type="button" value="按钮" id="btn">
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //给按钮注册事件
+        $('#btn').click(function () {
+            //清空ul
+            $('#ul').empty();
+            //移除某一个元素
+            $('#ul3').remove();//自删除
+
+        })
+    })
+</script>
+</body>
+</html>

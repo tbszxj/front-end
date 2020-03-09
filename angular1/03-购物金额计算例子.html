@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物金额计算</title>
+    <script src="lib/angular/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope, $timeout) {
+           $scope.phone = {
+               money : 10,
+               num : 5,
+               fre : 10
+           }
+           $scope.sum = function () {
+               //如果表达式过长可以将其提取出来，封装为一个函数
+               return $scope.phone.money * $scope.phone.num;
+           }
+
+           //$scope下有$watch监听器，用于监听域对象的改变
+            // 它接收三个参数，前两必选，最后一个可选
+            //第一个参数是监听的对象
+            //第二个参数是要执行的动作
+            //第三个参数是配置是否深度监听，false只能监听单值的改变，true可以监听对象下所有属性的改变
+            $scope.$watch('phone',function (newVal,oldVal) {
+                //处理函数传入两个函数，一个是新值，一个是旧值
+                console.log(newVal);
+                console.log(oldVal)
+            },true)
+
+
+            //除了可以监听具体值还可以监听函数
+            $scope.$watch($scope.sum,function (newVal,oldVal) {
+                //费用大于100免运费
+                $scope.phone.fre = newVal > 100 ? 0 : 10;
+            },true)
+        });
+    </script>
+</head>
+
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+    <p>价格：<input type="text" ng-model="phone.money"></p>
+    <p>数量：<input type="text" ng-model="phone.num"></p>
+
+    <!--使用过滤器给价格加上对应的货币符号，过滤器写法为表达式后加 | 线-->
+    <!--angularjs默认的价格过滤器符号为$，可以通过传参数的方式改变，传参即为过滤器后加 : 号+参数-->
+    <p>费用：{{sum() | currency : "￥"}}</p>
+    <p>运费：{{phone.fre | currency : "￥"}}</p>
+    <p>总价：{{sum() + phone.fre | currency : "￥"}}</p>
+</div>
+</body>
+</html>

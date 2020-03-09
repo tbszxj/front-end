@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="淡入" id="fadeIn">
+<input type="button" value="淡出" id="fadeOut">
+<input type="button" value="切换" id="fadeToggle">
+<input type="button" value="淡入到那里" id="fadeTo"><br><br>
+<div id="div1"></div>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //1.淡入
+        $('#fadeIn').click(function () {
+            //让id为div1的元素淡入
+            //不加参数也有动画效果
+            //参数1动画执行的时常
+            //动画执行完毕的回调函数
+            $('#div1').fadeIn(1000,function () {
+                alert('淡入完成');
+            });
+        });
+        //2.淡出
+        $('#fadeOut').click(function () {
+            $('#div1').fadeOut(1000,function () {
+                alert('淡出完成');
+            });
+        });
+        //3.切换 显示了就隐藏没显示就显示
+        $('#fadeToggle').click(function () {
+            $('#div1').fadeToggle(1000,function () {
+                alert('切换完成');
+            });
+        });
+        //4.淡入到什么程度
+        $('#fadeTo').click(function () {
+            //第一个参数是时间
+            //第二个参数是程度
+            $('#div1').fadeTo(1000,0.5);
+        });
+    })
+
+</script>
+</body>
+</html>

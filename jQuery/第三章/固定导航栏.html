@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="top">
+    <img src="../images/1.JPG">
+</div>
+<div class="nav">
+    <img src="../images/2.JPG">
+</div>
+<div class="main">
+    <img src="../images/3.JPG">
+</div>
+<div>
+    <img src="../images/4.JPG">
+</div>
+<div>
+    <img src="../images/5.JPG">
+</div>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        var topVal = $('.top').height();
+        //给页面设置滚动事件
+        $(window).scroll(function () {
+            //1.获取页面滚动距离
+            var scorllTopVal = $(window).scrollTop();
+            //2.判断 页面滚动距离是否大于第一部分的距离
+            if(scorllTopVal >= topVal){
+                //让第二部分固定
+                $('.nav').css({
+                    position : 'fixed',
+                    top:0,
+                    left:0
+                });
+                //设置第三部分的margin-top高度为第二部分的值
+                var navHeight = $('.nav').height();
+                $('.main').css({
+                    marginTop : navHeight
+                })
+            }else{
+                //还原定位
+                $('.nav').css({
+                    position : 'static',
+                    top:0,
+                    left:0
+                })
+                //设置第三部分的值为原来的值
+                $('.main').css({
+                    margin : 10
+                })
+            }
+        })
+    })
+</script>
+</body>
+</html>

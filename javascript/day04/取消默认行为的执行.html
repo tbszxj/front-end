@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://wwww.baidu.com" id="link">baidu</a>
+
+    <script>
+        var link = document.getElementById('link');
+        link.onclick = function (e) {
+            alert('点击了');
+            //取消默认行为的执行
+            return false;
+            //第二种取消方式，通过事件参数
+            //e.preventDefault();
+        }
+    </script>
+</body>
+</html>

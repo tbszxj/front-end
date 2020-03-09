@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .comment li{
+           display: inline;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<ul class="comment">
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+</ul>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //1.鼠标移入li标签，当前li标签和之前的li标签显示实心五角星，后面的显示空心
+        //2.鼠标离开，所有li变为空心
+        //3.点击li，鼠标离开后刚才点击的li和之前的变为实心，后面空心
+        $('.comment>li').on('mouseenter',function () {//鼠标移入
+            $(this).text('★').prevAll().text('★');
+            $(this).nextAll().text('☆');
+        }).on('mouseleave',function () {//鼠标离开
+            $('.comment>li').text('☆');
+            $('.comment>li[clickCurrent]').text('★').prevAll().text('★');
+        }).on('click',function () {
+            //给鼠标当前点击的做记号
+            $(this).attr('clickCurrent','current').siblings().removeAttr('clickCurrent');
+        })
+    })
+</script>
+</body>
+</html>

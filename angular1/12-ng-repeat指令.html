@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+    <script src="lib/angular/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="ctrl">
+    <ul>
+        <li ng-repeat="data in list">{{data}}</li>
+    </ul>
+
+
+    <input type="text" ng-model="searchKey"><input type="button" ng-click="fnFilter()" value="搜索"></input>
+    <table border="1">
+        <tr>
+            <th ng-click="fnSort('name')">姓名</th>
+            <th ng-click="fnSort('age')">年龄</th>
+        </tr>
+        <tr ng-repeat="data in tableData">
+            <td>{{data.name}}</td>
+            <td>{{data.age}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    //过滤器是可以组合使用的
+    var app = angular.module("myApp",[]);
+    app.controller('ctrl',['$scope','$filter',function($scope,$filter){
+        $scope.list = [
+            'aaa','bbb','ccc'
+        ];
+
+        //防止搜索时丢失元数据
+        var oriArr = [
+            {name:'zhang san',age:'22'},
+            {name:'li si',age:'23'},
+            {name:'wang wu',age:'24'},
+            {name:'zhao liu',age:'25'},
+            {name:'ma zhi',age:'26'}
+        ];
+
+        $scope.tableData = oriArr;
+
+        //点击时按点击列排序,根据参数判断点的是那一列
+        $scope.fnSort = function (arg) {
+
+            arguments.callee['fnSort'+arg] = !arguments.callee['fnSort'+arg];
+
+            $scope.tableData = $filter('orderBy')($scope.tableData,arg,arguments.callee['fnSort'+arg]);
+        };
+        
+        //搜索功能，按内容过滤
+        $scope.fnFilter = function () {
+            $scope.tableData = $filter('filter')(oriArr,$scope.searchKey);
+        }
+        
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+    <span>span1</span>
+    <p>asdrfw
+        <b>asdad</b>
+    </p>
+</div>
+<br>
+<input type="button" value="克隆" id="clone">
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //给按钮注册事件
+        $('#clone').click(function () {
+            $('#div1').click(function () {
+                alert('我被点击了。。。')
+            })
+            //克隆方法有参数，不论是true或false ，都会克隆到后代节点的（默认为false）
+            //区别在于参数为true会把事件一起克隆，如果为false不会克隆事件
+            var $cloneDiv = $('#div1').clone(true);
+            //修改id
+            $cloneDiv.attr('id','div2');
+            $('body').append($cloneDiv);
+        })
+    })
+</script>
+</body>
+</html>

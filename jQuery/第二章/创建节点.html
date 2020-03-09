@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btnHtml1" value="html设置内容">
+<input type="button" id="btnHtml2" value="$设置内容">
+<div id="div1">
+    <p>p1
+        <span>pan1</span>
+    </p>
+</div>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        //原生js中创建节点:document.write() innerHTML document.createElement()
+        //jquary中创建节点 html(); $();
+
+        //1.html() 设置或者获取内容 实现了innerHtml的功能
+        $('#btnHtml1').click(function () {
+            console.log($('#div1').html());//不给参数获取标签下的所有内容
+            //1.2设置内容，给参数
+            $('#div1').html('我是设置的内容');//会覆盖
+        })
+
+        //2. $ 实现了createElement的功能 要在页面上显示就要追加
+        $('#btnHtml2').click(function () {
+            var $link = $('<a href="https://www.baidu.com">我是新闻</a>');
+            console.log($link);
+            $('#div1').append($link);//追加
+        })
+
+    })
+
+</script>
+</body>
+</html>

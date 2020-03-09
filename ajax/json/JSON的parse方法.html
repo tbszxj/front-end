@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON使用phrase方法</title>
+</head>
+<body>
+
+<!--使用JSON的prase方法将数据转化为JavaScript对象 -->
+<h2>从 JSON 对象中创建 JavaScript 对象</h2>
+
+<p id="demo"></p>
+
+<script>
+    var obj = JSON.parse('{ "name":"runoob", "alexa":10000, "site":"www.runoob.com" }');
+    document.getElementById("demo").innerHTML = obj.name + "：" + obj.site;
+</script>
+<!-- JSON 不能存储 Date 对象。如果你需要存储 Date 对象，需要将其转换为字符串。-->
+<h2>将字符串转换为 Date 对象。</h2>
+
+<p id="demo1"></p>
+
+<script>
+
+    var text = '{ "name":"Runoob", "initDate":"2013-12-14", "site":"www.runoob.com"}';
+    var obj = JSON.parse(text);
+    obj.initDate = new Date(obj.initDate);
+
+    document.getElementById("demo1").innerHTML = obj.name + "创建日期: " + obj.initDate;
+
+</script>
+<!--启用 JSON.parse 的第二个参数 reviver，一个转换结果的函数，对象的每个成员调用此函数。-->
+<h2>使用第二个参数reviver将字符串转换为 Date 对象</h2>
+
+<p id="demo2"></p>
+
+<script>
+
+    var text = '{ "name":"Runoob", "initDate":"2013-12-14", "site":"www.runoob.com"}';
+    var obj = JSON.parse(text, function (key, value) {
+        if (key == "initDate") {
+            return new Date(value);
+        } else {
+            return value;
+        }});
+
+    document.getElementById("demo2").innerHTML = obj.name + "创建日期：" + obj.initDate;
+
+</script>
+<!--JSON 不允许包含函数，但你可以将函数作为字符串存储，之后再将字符串转换为函数。-->
+<h2>字符串转换为函数</h2>
+
+<p id="demo3"></p>
+
+<script>
+
+    var text = '{ "name":"Runoob", "alexa":"function () {return 10000;}", "site":"www.runoob.com"}';
+    var obj = JSON.parse(text);
+    obj.alexa = eval("(" + obj.alexa + ")");
+
+    document.getElementById("demo3").innerHTML = obj.name + " Alexa 排名：" + obj.alexa();
+
+</script>
+
+
+</body>
+</html>
