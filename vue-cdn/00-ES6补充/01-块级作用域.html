@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<script>
+  //ES5之前因为if和for都没有块级作用域的概念，所以很多时候，我们都必须借助于function的作用域来解决应用外面变量的问题
+  //ES6中加入了let，let是有if和for的块级作用域的。
+
+
+  // 1.变量作用域：变量在什么范围内是可用的
+  {
+    var name = 'abc';
+    console.log(name);
+  }
+  //var没有块级作用域，在此处同样可用
+  console.log(name);
+
+  // 2.没有块级作用域引起的问题,for块
+  // var btns = document.getElementsByTagName('button');
+  // for(var i=0; i<btns.length; i++){
+  //   btns[i].addEventListener('click',function () {
+  //     console.log('第'+ i + '个按钮被点击');
+  //   })
+  // }
+  // 3.原先解决作用域问题的方式，闭包（相当于定义一个函数并立即传参执行）
+  // 为什么闭包可用解决这个问题：因为函数是由作用域的。
+  // var btns = document.getElementsByTagName('button');
+  // for(var i=0; i<btns.length; i++){
+  //   (function (num) {
+  //     btns[i].addEventListener('click',function () {
+  //       console.log('第'+ num + '个按钮被点击');
+  //     })
+  //   })(i)
+  // }
+  // 4.使用let解决
+  var btns = document.getElementsByTagName('button');
+  for(let i=0; i<btns.length; i++){
+    btns[i].addEventListener('click',function () {
+      console.log('第'+  + '个按钮被点击');
+    })
+  }
+
+</script>
+</body>
+</html>

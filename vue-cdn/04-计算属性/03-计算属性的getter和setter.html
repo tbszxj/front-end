@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{fullName}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      firstName: 'kobe',
+      lastName: 'Bryant'
+    },
+    computed:{
+      fullName:{//完整的计算属性包括get和set方法
+        //newValue值示例'abc 123',在命令行中通过app.fullName设置
+        set:function (newValue) {//设置属性的值（通常不需要实现，为只读属性）
+          console.log("---------",newValue);
+          const names = newValue.split(' ');
+          this.firstName = names[0];
+          this.lastName = names[1];
+        },
+        get:function () {//获取属性的值
+          return this.firstName +' ' + this.lastName;
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

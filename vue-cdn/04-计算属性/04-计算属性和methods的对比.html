@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--1.名字拼接的mustache写法（不推荐）-->
+  <h2>{{firstName}} {{lastName}}</h2>
+  <!--2.通过方法拼接-->
+  <h2>{{getFullName()}}</h2>
+  <!--3.通过计算属性拼接（推荐）-->
+  <h2>{{fullName}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      firstName: 'kobe',
+      lastName: 'Bryant'
+    },
+    methods: {//method每次调用都会执行一次，如果重复使用性能较低
+      getFullName: function () {
+        return this.firstName + ' ' + this.lastName;
+      }
+    },
+    computed: {//计算属性执行后会缓存，如果原先的firstName和lastName没变就不会重复执行，提高性能
+      fullName: function () {
+        return this.firstName + ' ' + this.lastName
+      }
+    }
+  })
+</script>
+</body>
+</html>
