@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--如果用户已将输入了信息，然后点击切换，切换后输入的信息不会清空-->
+  <!--原因是vue渲染时使用虚拟dom，出于性能考虑会复用原先的虚拟节点-->
+  <!--如果不希望复用，可用加一个key,不同的key不能复用-->
+  <span v-if="isUser">
+    <label for="username">用户账户</label>
+    <input type="test" id="username" placeholder="用户账户" key="username">
+  </span>
+  <span v-else>
+    <label for="email">用户邮箱</label>
+    <input type="text" id="email" placeholder="用户邮箱" key="email">
+  </span>
+  <button @click="isUser=!isUser">切换类型</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      isUser:true,
+    }
+  })
+</script>
+</body>
+</html>

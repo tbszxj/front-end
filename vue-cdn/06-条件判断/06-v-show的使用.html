@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--v-if和v-show都可用控制元素的显示与否，两种作用的机制不同
+  v-if是删除相应的元素，dom的挂载和卸载控制显示
+  v-show是隐藏相应的元素，使用行内样式控制显示
+  -->
+  <h2 v-if="isShow">{{message}}</h2>
+
+  <h2 v-show="isShow">{{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'hello world!',
+      isShow: true
+    }
+  })
+</script>
+</body>
+</html>

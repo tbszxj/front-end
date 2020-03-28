@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--1.遍历对象，如果只是获取一个值，那么获取到底是value-->
+  <ul>
+    <li v-for="item in person">{{item}}</li>
+  </ul>
+
+  <!--2.获取对象的key和value   （value，key）-->
+  <ul>
+    <li v-for="(value,key) in person">{{value}}--{{key}}</li>
+  </ul>
+
+  <!--3.获取key、value和index，获取索引值-->
+  <ul>
+    <li v-for="(value,key,index) in person">{{value}}--{{key}}--{{index}}</li>
+  </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      person: {
+        name:'cxk',
+        age: 28,
+        height: 170
+      }
+    }
+  })
+</script>
+</body>
+</html>
