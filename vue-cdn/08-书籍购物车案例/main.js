@@ -46,8 +46,17 @@ const app = new Vue({
   computed: {
     totalPrice() {
       let totalPrice = 0;
-      for(let i=0;i<this.books.length;i++){
-        totalPrice = totalPrice + this.books[i].price * this.books[i].count;
+      // 1.普通for循环
+      // for(let i=0;i<this.books.length;i++){
+      //   totalPrice = totalPrice + this.books[i].price * this.books[i].count;
+      // }
+      // 2. 使用in的方式
+      // for(let i in this.books){
+      //   totalPrice = totalPrice + this.books[i].price * this.books[i].count;
+      // }
+      // 3.使用of的方式
+      for(let item of this.books){
+        totalPrice += item.price * item.count;
       }
       return totalPrice;
     }
@@ -59,3 +68,40 @@ const app = new Vue({
     }
   }
 });
+
+
+//jsvsscript高阶函数使用
+//filter/map/reduce
+const nums = [10,36,115,96,456,32,789];
+
+//1.filter函数的使用(获取所有小于100的值)
+let newNums = nums.filter(function (n) {
+  return n < 100;
+});
+console.log(newNums);
+
+//2.map函数的使用（将值乘以2）
+let newNums2 = newNums.map(function (n) {
+  return n * 2;
+});
+console.log(newNums2);
+
+//3.reduce的使用（归并求和）
+let sum = newNums2.reduce(function (preValue,n) {
+  return preValue + n;
+},0);
+console.log(sum);
+
+//4.合并写法
+let total = nums.filter(function (n) {
+  return n < 100;
+}).map(function (n) {
+  return n *2;
+}).reduce(function (preValue,n) {
+  return preValue + n;
+},0);
+console.log(total);
+
+//5. 简化写法
+let total2 = nums.filter(n => n < 100).map( n => n*2).reduce((pre,n)=>pre+n);
+console.log(total2);
