@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--父组件模板-->
+<div id="app">
+  <!--父组件监听子组件的自定义事件来处理-->
+  <cpn @item-click="handleClick"></cpn>
+</div>
+<!--子组件模板-->
+<template id="cpn">
+  <div>
+    <button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  //1.子组件
+  const cpn = {
+    template: '#cpn',
+    data(){
+      return {
+        categories:[
+          {id:'aaa',name:'热门推荐'},
+          {id:'bbb',name:'数码办公'},
+          {id:'ccc',name:'生活用品'},
+          {id:'ddd',name:'家用电器'}
+        ]
+      }
+    },
+    methods: {
+      btnClick(item){
+        //向父组件发送事件
+        this.$emit('item-click',item);
+      }
+    }
+  };
+  //2.父组件
+  const app = new Vue({
+    el: '#app',
+    methods: {
+      handleClick(item){
+        console.log(item);
+      }
+    },
+    components: {
+      cpn
+    }
+  })
+</script>
+</body>
+</html>
