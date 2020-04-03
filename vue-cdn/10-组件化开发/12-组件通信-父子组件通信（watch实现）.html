@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn :pnum="num" @num-change="numChange"></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <h2>pnum: {{pnum}}</h2>
+    <h2>dnum: {{dnum}}</h2>
+    <input type="text" v-model="dnum">
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  //需求希望子组件更新值后父组件同时更新
+  const app = new Vue({
+    el: '#app',
+    data: {
+      num: 0
+    },
+    methods: {
+      numChange(value){
+        this.num = parseFloat(value);
+      }
+    },
+    components: {
+      cpn: {
+        template: '#cpn',
+        props: {
+          pnum: Number
+        },
+        data(){
+          return {
+            dnum : this.pnum
+          }
+        },
+        watch: {
+          dnum(newValue){
+            this.dnum = newValue;
+            this.$emit('num-change',newValue);
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>
