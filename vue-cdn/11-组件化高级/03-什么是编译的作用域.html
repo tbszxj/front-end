@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--这里的isShow使用的是父组件data中的-->
+  <cpn v-show="isShow"></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <h2>我是组件</h2>
+    <!--这里的isShow使用的是子组件中的data中的数据-->
+    <p v-show="isShow">我是组件内容</p>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'hello world!',
+      isShow: true
+    },
+    components: {
+      cpn: {
+        template: '#cpn',
+        data(){
+          return {
+            isShow: false
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>
